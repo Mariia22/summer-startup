@@ -8,10 +8,14 @@ export const theme: MantineThemeOverride = {
   headings: {
     fontWeight: 700,
     sizes: {
+      h1: {
+        fontWeight: 600,
+        lineHeight: '2.25rem'
+      },
       h2: {
-        fontSize: '1.75rem',
+        fontSize: '1.25rem',
         fontWeight: 700,
-        lineHeight: '2.12rem'
+        lineHeight: '1.25rem'
       }
     }
   },
@@ -35,7 +39,20 @@ export const theme: MantineThemeOverride = {
             borderRadius: '8px',
           },
         }),
+        none: (theme) => ({
+          root: {
+            fontSize: '0.875rem',
+            lineHeight: '1.31rem',
+            color: theme.colors.grey[3],
+            height: '1.5rem'
+          },
+        }),
       },
     },
+    Select: {
+      styles: {
+        root: { borderRadius: '8px' },
+      },
+    }
   }
 }
