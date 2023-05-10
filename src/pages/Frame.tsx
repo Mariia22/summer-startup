@@ -1,12 +1,14 @@
 import { Outlet } from "react-router";
 import Header from "../modules/Header";
-import { Flex } from '@mantine/core';
+import { Flex, useMantineTheme } from '@mantine/core';
 
 const Frame = () => {
+  const theme = useMantineTheme();
   return (
     <Flex
-      mih={"100vh"}
-      direction="column"
+      mih={'100vh'}
+      direction='column'
+      sx={{ backgroundColor: theme.colors.grey[5] }}
     >
       <Header />
       <Outlet />

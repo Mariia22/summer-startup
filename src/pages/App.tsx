@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Frame from './Frame';
-import { routesConfig } from './routesConfig';
+import { routesConfig } from './utils/routesConfig';
 
 const App = () => {
   return (

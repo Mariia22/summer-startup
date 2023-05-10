@@ -5,7 +5,6 @@ export const theme: MantineThemeOverride = {
   fontFamily: 'Inter',
   lineHeight: '1.4rem',
   defaultRadius: '12px',
-  fontSizes: {},
   headings: {
     fontWeight: 700,
     sizes: {
@@ -19,7 +18,7 @@ export const theme: MantineThemeOverride = {
   white: '#FFFFFF',
   black: '#000000',
   colors: {
-    grey: ['#F5F5F6', '#EAEBED', '#D5D6DC', '#ACADB9', '#7B7C88'],
+    grey: ['#F5F5F6', '#EAEBED', '#D5D6DC', '#ACADB9', '#7B7C88', '#F7F7F8', '#232134'],
     blue: ['#3B7CD3', '#5E96FC', '#92C1FF', '#B7D6FF', '#C9E0FF', '#DEECFF']
   },
   loader: 'oval',

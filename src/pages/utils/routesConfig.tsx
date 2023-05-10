@@ -1,7 +1,7 @@
-import EmptyPage from "./EmptyPage";
-import FavouriteList from "./FavouriteList";
-import Vacancy from "./Vacancy";
-import VacancyList from "./VacancyList";
+import EmptyPage from "../EmptyPage";
+import FavouriteList from "../FavouriteList";
+import Vacancy from "../Vacancy";
+import VacancyList from "../VacancyList";
 
 export const routesConfig = [
   {
@@ -25,5 +25,3 @@ export const routesConfig = [
     element: <EmptyPage />
   }
 ];
-
-export type RoutesType = (typeof routesConfig)[number];
