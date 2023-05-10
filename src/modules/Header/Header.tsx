@@ -1,6 +1,6 @@
 import { Flex, useMantineTheme } from '@mantine/core';
-import Logo from '../components/Logo';
-import Navbar from './Navigation/Navbar';
+import Logo from '../../components/Logo';
+import Navbar from '../Navigation/Navbar';
 
 const Header = () => {
   const theme = useMantineTheme();

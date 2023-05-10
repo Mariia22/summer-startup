@@ -22,4 +22,20 @@ export const theme: MantineThemeOverride = {
     blue: ['#3B7CD3', '#5E96FC', '#92C1FF', '#B7D6FF', '#C9E0FF', '#DEECFF']
   },
   loader: 'oval',
+  components: {
+    Button: {
+      variants: {
+        filled: (theme) => ({
+          root: {
+            fontSize: '0.875rem',
+            lineHeight: '1.31rem',
+            textAlign: 'center',
+            padding: '5.5px 20px',
+            backgroundColor: theme.colors.blue[1],
+            borderRadius: '8px',
+          },
+        }),
+      },
+    },
+  }
 }

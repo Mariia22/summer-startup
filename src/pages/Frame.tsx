@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import Header from "../modules/Header";
+import Header from "../modules/Header/Header";
 import { Flex, useMantineTheme } from '@mantine/core';
 
 const Frame = () => {
