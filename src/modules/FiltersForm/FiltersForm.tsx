@@ -1,3 +1,4 @@
+import React from 'react';
 import { Flex, Title, Button, Image, Select, useMantineTheme } from '@mantine/core';
 
 const FiltersForm = () => {

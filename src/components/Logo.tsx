@@ -1,3 +1,4 @@
+import React from 'react';
 import { Flex, Title, Image, useMantineTheme } from "@mantine/core";
 
 const Logo = () => {

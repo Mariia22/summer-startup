@@ -1,3 +1,4 @@
+import React from 'react';
 import { TextInput, Image, Button, useMantineTheme } from '@mantine/core';
 
 const SearchForm = () => {

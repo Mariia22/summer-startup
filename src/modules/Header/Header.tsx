@@ -1,3 +1,4 @@
+import React from 'react';
 import { Flex, useMantineTheme } from '@mantine/core';
 import Logo from '../../components/Logo';
 import Navbar from '../Navigation/Navbar';

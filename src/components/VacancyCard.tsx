@@ -1,3 +1,4 @@
+import React from 'react';
 import { Flex, Title, Image, useMantineTheme, Text } from '@mantine/core';
 
 const VacancyCard = () => {
