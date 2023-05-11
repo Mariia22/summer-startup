@@ -10,9 +10,14 @@ const queryHeaders = {
   Authorization: `Bearer ${localStorage.getItem("token")?.toString()}`
 };
 
-const baseAuthURL = `${baseURL}/2.0/oauth2`;
+const baseAuthURL = `${baseURL}/2.0`;
 
 export const authQueryInstance = axios.create({
+  baseURL: baseAuthURL,
+  headers: queryHeaders
+});
+
+export const vacanciesQueryInstance = axios.create({
   baseURL: baseAuthURL,
   headers: queryHeaders
 });

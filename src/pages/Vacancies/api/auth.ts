@@ -1,7 +1,8 @@
-import { AuthResponseType } from "../../Vacancies/types";
-import { authQueryInstance } from "./const";
+import { AuthResponseType } from "../types";
+import { authQueryInstance } from "../../App/api/const";
 import { useQuery } from "react-query";
 import { AxiosError } from "axios";
+import { standardCacheTimeReactQueryMs } from "../const";
 
 const login = import.meta.env.VITE_LOGIN;
 const password = import.meta.env.VITE_PASSWORD;
@@ -18,11 +19,12 @@ export const authGetData = () => {
     ["authData"],
     () => {
       const response =
-        authQueryInstance.get(`/password/?login=${login}&password=${password}
+        authQueryInstance.get(`/oauth2/password/?login=${login}&password=${password}
       &client_id=${clientId}&client_secret=${clientPassword}`);
       return response;
     },
     {
+      staleTime: standardCacheTimeReactQueryMs,
       retry: false,
       select: (response) => response.data as AuthResponseType
     }

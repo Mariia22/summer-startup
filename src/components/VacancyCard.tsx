@@ -1,7 +1,16 @@
-import React from 'react';
+import { FC } from 'react';
 import { Flex, Title, Image, useMantineTheme, Text } from '@mantine/core';
 
-const VacancyCard = () => {
+type VacancyCardType = {
+  key: number,
+  profession: string,
+  payment_from: number,
+  currency: string
+  type_of_work: string
+  town: Record<string, string>
+}
+
+const VacancyCard: FC<VacancyCardType> = ({ profession, payment_from, currency, type_of_work, town }) => {
   const theme = useMantineTheme();
   return (
     <Flex
@@ -14,9 +23,9 @@ const VacancyCard = () => {
       }}
     >
       <Flex direction='column' gap='12px'>
-        <Title order={3} sx={{ color: theme.colors.blue[1] }}>Менеджер-дизайнер</Title>
+        <Title order={3} sx={{ color: theme.colors.blue[1] }}>{profession}</Title>
         <Flex>
-          <Text fw={600}>з/п от 70000 rub</Text>
+          <Text fw={600}>з/п от {payment_from} {currency}</Text>
           <Text span
             sx={{
               fontFamily: 'Poppins',
@@ -28,11 +37,11 @@ const VacancyCard = () => {
           >
             &bull;
           </Text>
-          <Text fw={400}>Полный рабочий день</Text>
+          <Text fw={400}>{type_of_work}</Text>
         </Flex>
         <Flex align='center'>
           <Image width={20} height={20} src='/location.svg' sx={{ marginRight: '2px' }} />
-          <Text fw={400}>Новый Уренгой</Text>
+          <Text fw={400}>{town.title}</Text>
         </Flex>
       </Flex>
       <Flex>
