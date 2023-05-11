@@ -4,7 +4,7 @@ export const theme: MantineThemeOverride = {
   colorScheme: 'light',
   fontFamily: 'Inter',
   lineHeight: '1.4rem',
-  defaultRadius: '12px',
+  defaultRadius: '8px',
   headings: {
     fontWeight: 700,
     sizes: {
@@ -16,6 +16,15 @@ export const theme: MantineThemeOverride = {
         fontSize: '1.25rem',
         fontWeight: 700,
         lineHeight: '1.25rem'
+      },
+      h3: {
+        fontSize: '1.25rem',
+        fontWeight: 600,
+        lineHeight: '1.513rem'
+      },
+      h4: {
+        fontWeight: 700,
+        lineHeight: '1.21rem'
       }
     }
   },
@@ -49,10 +58,5 @@ export const theme: MantineThemeOverride = {
         }),
       },
     },
-    Select: {
-      styles: {
-        root: { borderRadius: '8px' },
-      },
-    }
   }
 }

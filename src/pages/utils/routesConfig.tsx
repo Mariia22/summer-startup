@@ -1,7 +1,7 @@
 import EmptyPage from "../EmptyPage";
 import FavouriteList from "../FavouriteList";
 import Vacancy from "../Vacancy";
-import VacancyList from "../VacancyList";
+import VacancyList from "../Vacancies";
 
 export const routesConfig = [
   {
