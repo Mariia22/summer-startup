@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider } from "@mantine/core";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { theme } from "./style/theme";
 import App from "./pages/App/App";

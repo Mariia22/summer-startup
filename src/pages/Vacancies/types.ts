@@ -7,15 +7,19 @@ export type AuthResponseType = {
 };
 
 export type VacanciesResponseType = {
-  id_vacancy: number;
+  id: number;
   profession: string;
-  firm_name: string;
+  firmName: string;
   town: {
     id: string;
     title: string;
   };
-  type_of_work: string;
+  type_of_work: {
+    id: string;
+    title: string;
+  };
   payment_from: number;
   payment_to: number;
   currency: string;
+  vacancyRichText: string;
 };
