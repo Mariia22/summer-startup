@@ -23,3 +23,5 @@ export type VacanciesResponseType = {
   currency: string;
   vacancyRichText: string;
 };
+
+export type VacanciesType = VacanciesResponseType & { isFavourite: boolean };

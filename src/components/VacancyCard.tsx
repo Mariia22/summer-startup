@@ -1,5 +1,14 @@
-import { FC } from "react";
-import { Flex, Title, Image, useMantineTheme, Text } from "@mantine/core";
+import { FC, useState } from "react";
+import {
+  Flex,
+  Title,
+  Image,
+  useMantineTheme,
+  Text,
+  ActionIcon,
+} from "@mantine/core";
+import { ReactComponent as FavouriteIcon } from "../../public/saveButton.svg";
+import { saveDataToLS, toggleFavouriteVacancy } from "../utils/helpers";
 
 type VacancyCardType = {
   id: number;
@@ -9,6 +18,7 @@ type VacancyCardType = {
   currency: string;
   typeOfWork: string;
   town: string;
+  isFavourite: boolean;
 };
 
 const VacancyCard: FC<VacancyCardType> = ({
@@ -19,18 +29,16 @@ const VacancyCard: FC<VacancyCardType> = ({
   currency,
   typeOfWork,
   town,
+  isFavourite,
 }) => {
   const theme = useMantineTheme();
-  const handleOnClick = () => {
-    console.log(id);
-    // const favouriteVacancies = localStorage.getItem('favourite') || [];
-    // if (favouriteVacancies.includes(key)) {
-    //   favouriteVacancies.filter(id => id !== key)
-    // } else {
-    //   favouriteVacancies.push(key);
-    // }
-    // localStorage.setItem('favourite', favouriteVacancies);
-  };
+  const [isActive, setActive] = useState(isFavourite);
+
+  function handleChangeCard() {
+    setActive(!isActive);
+    const favourites = toggleFavouriteVacancy(id);
+    saveDataToLS("favourite", favourites);
+  }
 
   return (
     <Flex
@@ -83,12 +91,18 @@ const VacancyCard: FC<VacancyCardType> = ({
         </Flex>
       </Flex>
       <Flex>
-        <Image
-          width={24}
-          height={24}
-          src="/saveButton.svg"
-          onClick={handleOnClick}
-        />
+        <ActionIcon variant="transparent" onClick={handleChangeCard}>
+          <FavouriteIcon
+            width={24}
+            height={24}
+            style={{
+              fill: isActive ? `${theme.colors.blue[1]}` : "none",
+              stroke: isActive
+                ? `${theme.colors.blue[1]}`
+                : `${theme.colors.grey[7]}`,
+            }}
+          />
+        </ActionIcon>
       </Flex>
     </Flex>
   );

@@ -1,20 +1,18 @@
 import { Flex, Loader, Text, Pagination, useMantineTheme } from "@mantine/core";
 import SearchForm from "../../modules/SearchForm/SearchForm";
 import FiltersForm from "../../modules/FiltersForm/FiltersForm";
-import { VacanciesResponseType } from "./types";
+import { VacanciesType } from "./types";
 import VacancyCard from "../../components/VacancyCard";
-import { useGetVacancies } from "./api/getVacancies";
 import { useState } from "react";
 import { numberOfPages } from "./const";
+import { useVacansiesWithFavouritesField } from "./hooks/useVacansiesWithFavouritesField";
 
 const VacanciesPage = () => {
   const token = localStorage.getItem("token")?.toString();
   const theme = useMantineTheme();
   const [activePage, setActivePage] = useState(1);
-  const { vacancies, isLoading, isError, error } = useGetVacancies(
-    token ? token : null,
-    activePage - 1
-  );
+  const { vacanciesWithFavoriteFlag, isLoading, isError, error } =
+    useVacansiesWithFavouritesField(token ? token : null, activePage - 1);
 
   return (
     <Flex justify="center" gap="28px" sx={{ padding: "40px 44px 162px" }}>
@@ -34,9 +32,9 @@ const VacanciesPage = () => {
           </Text>
         )}
         {/* {errorMessage && <Text sx={{ fontSize: "1.5rem", lineHeight: "2.25rem" }}>{errorMessage}</Text>} */}
-        {vacancies &&
-          vacancies.length > 0 &&
-          vacancies.map((vacancy: VacanciesResponseType) => {
+        {vacanciesWithFavoriteFlag &&
+          vacanciesWithFavoriteFlag.length > 0 &&
+          vacanciesWithFavoriteFlag.map((vacancy: VacanciesType) => {
             return (
               <VacancyCard
                 key={vacancy.id}
@@ -47,6 +45,7 @@ const VacanciesPage = () => {
                 currency={vacancy.currency}
                 typeOfWork={vacancy.type_of_work?.title}
                 town={vacancy.town?.title}
+                isFavourite={vacancy.isFavourite}
               />
             );
           })}
