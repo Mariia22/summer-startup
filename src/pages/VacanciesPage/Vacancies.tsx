@@ -1,21 +1,27 @@
 import { Flex, Loader, Text, Pagination, useMantineTheme } from "@mantine/core";
 import SearchForm from "../../modules/SearchForm/SearchForm";
 import FiltersForm from "../../modules/FiltersForm/FiltersForm";
-import { VacanciesType } from "./types";
+import { VacanciesType } from "./utils/types";
 import VacancyCard from "../../components/VacancyCard";
-import { useState } from "react";
-import { numberOfPages } from "./const";
+import { useEffect, useState } from "react";
+import { numberOfPages } from "./utils/const";
 import { useVacansiesWithFavouritesField } from "./hooks/useVacansiesWithFavouritesField";
+import { useNavigate } from "react-router-dom";
 
 const VacanciesPage = () => {
   const token = localStorage.getItem("token")?.toString();
   const theme = useMantineTheme();
+  const navigate = useNavigate();
   const [activePage, setActivePage] = useState(1);
   const { vacanciesWithFavoriteFlag, isLoading, isError, error } =
     useVacansiesWithFavouritesField(token ? token : null, activePage - 1);
 
+  useEffect(() => {
+    navigate(`/vacancies/${activePage}`)
+  }, [activePage])
+
   return (
-    <Flex justify="center" gap="28px" sx={{ padding: "40px 44px 162px" }}>
+    <Flex justify="center" gap="28px" sx={{ padding: "40px 44px 162px", backgroundColor: theme.colors.grey[5] }}>
       <FiltersForm />
       <Flex direction="column" gap="1rem" sx={{ width: "53.6%" }}>
         <SearchForm />
@@ -45,6 +51,7 @@ const VacanciesPage = () => {
                 currency={vacancy.currency}
                 typeOfWork={vacancy.type_of_work?.title}
                 town={vacancy.town?.title}
+                detailes={vacancy.vacancyRichText}
                 isFavourite={vacancy.isFavourite}
               />
             );

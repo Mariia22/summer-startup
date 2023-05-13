@@ -1,6 +1,6 @@
 import { getFavouritesVacancies } from "../../../utils/helpers";
 import { useGetVacancies } from "../api/getVacancies";
-import { VacanciesType } from "../types";
+import { VacanciesType } from "../utils/types";
 
 export const useVacansiesWithFavouritesField = (
   token: string | null,
@@ -26,6 +26,6 @@ export const useVacansiesWithFavouritesField = (
     vacanciesWithFavoriteFlag,
     isLoading,
     isError,
-    error,
+    error
   };
 };

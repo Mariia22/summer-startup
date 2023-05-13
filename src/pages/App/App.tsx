@@ -1,7 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Frame from "../Frame";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import { routesConfig } from "../../utils/routesConfig";
 import { useAuthGetData } from "./api/auth";
+import Header from "../../modules/Header/Header";
 
 const App = () => {
   const { authData } = useAuthGetData();
@@ -10,12 +10,11 @@ const App = () => {
 
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
-        <Route path="/" element={<Frame />}>
-          {routesConfig.map(({ id, path, element }) => {
-            return <Route key={id} path={path} element={element} />;
-          })}
-        </Route>
+        {routesConfig.map(({ id, path, element }) => {
+          return <Route key={id} path={path} element={element} />;
+        })}
       </Routes>
     </BrowserRouter>
   );

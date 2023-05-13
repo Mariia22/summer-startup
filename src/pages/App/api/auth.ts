@@ -1,4 +1,4 @@
-import { AuthResponseType } from "../../Vacancies/types";
+import { AuthResponseType } from "../../VacanciesPage/utils/types";
 import { queryInstance } from "../../../utils/const";
 import { useQuery } from "react-query";
 import { AxiosError } from "axios";
@@ -13,7 +13,7 @@ export const useAuthGetData = () => {
     data: authData,
     isLoading,
     isError,
-    error,
+    error
   } = useQuery(
     ["authData"],
     () => {
@@ -24,7 +24,7 @@ export const useAuthGetData = () => {
     },
     {
       retry: false,
-      select: (response) => response.data as AuthResponseType,
+      select: (response) => response.data as AuthResponseType
     }
   );
   return { authData, isLoading, isError, error: error as AxiosError };

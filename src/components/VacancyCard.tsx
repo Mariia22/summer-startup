@@ -7,8 +7,9 @@ import {
   Text,
   ActionIcon,
 } from "@mantine/core";
-import { ReactComponent as FavouriteIcon } from "../../public/saveButton.svg";
+import { ReactComponent as FavouriteIcon } from "../assets/saveButton.svg";
 import { saveDataToLS, toggleFavouriteVacancy } from "../utils/helpers";
+import { useNavigate } from "react-router-dom";
 
 type VacancyCardType = {
   id: number;
@@ -18,7 +19,9 @@ type VacancyCardType = {
   currency: string;
   typeOfWork: string;
   town: string;
+  detailes: string;
   isFavourite: boolean;
+  isDetailed?: boolean;
 };
 
 const VacancyCard: FC<VacancyCardType> = ({
@@ -29,15 +32,36 @@ const VacancyCard: FC<VacancyCardType> = ({
   currency,
   typeOfWork,
   town,
+  detailes,
   isFavourite,
+  isDetailed,
+
 }) => {
   const theme = useMantineTheme();
+  const navigate = useNavigate();
   const [isActive, setActive] = useState(isFavourite);
 
-  function handleChangeCard() {
+  function handleChangeCard(event: MouseEvent) {
+    event.stopPropagation();
     setActive(!isActive);
     const favourites = toggleFavouriteVacancy(id);
     saveDataToLS("favourite", favourites);
+  }
+
+  function handleOpenCard() {
+    !isDetailed && navigate(`vacancy/${id}`, {
+      state: {
+        id,
+        profession,
+        paymentFrom,
+        paymentTo,
+        currency,
+        typeOfWork,
+        town,
+        detailes,
+        isFavourite
+      }
+    })
   }
 
   return (
@@ -48,10 +72,12 @@ const VacancyCard: FC<VacancyCardType> = ({
         backgroundColor: theme.white,
         border: `1px solid ${theme.colors.grey[1]}`,
         borderRadius: "12px",
+        cursor: "pointer"
       }}
+      onClick={handleOpenCard}
     >
       <Flex direction="column" gap="12px">
-        <Title order={3} sx={{ color: theme.colors.blue[1] }}>
+        <Title order={3} sx={{ color: isDetailed ? theme.black : theme.colors.blue[1] }}>
           {profession}
         </Title>
         <Flex>
@@ -91,7 +117,7 @@ const VacancyCard: FC<VacancyCardType> = ({
         </Flex>
       </Flex>
       <Flex>
-        <ActionIcon variant="transparent" onClick={handleChangeCard}>
+        <ActionIcon variant="transparent" onClick={() => handleChangeCard}>
           <FavouriteIcon
             width={24}
             height={24}

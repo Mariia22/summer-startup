@@ -1,15 +1,15 @@
-import { VacanciesResponseType } from "../types";
+import { VacanciesResponseType } from "../utils/types";
 import { queryInstance } from "../../../utils/const";
 import { useQuery } from "react-query";
 import { AxiosError } from "axios";
-import { vacanciesPerPage } from "../const";
+import { vacanciesPerPage } from "../utils/const";
 
 export const useGetVacancies = (token: string | null, page: number) => {
   const {
     data: vacancies,
     isLoading,
     isError,
-    error,
+    error
   } = useQuery(
     ["vacancies", token, page],
     () => {
@@ -22,7 +22,7 @@ export const useGetVacancies = (token: string | null, page: number) => {
       retry: false,
       enabled: !!token,
       select: (response) =>
-        response.data.objects as Array<VacanciesResponseType>,
+        response.data.objects as Array<VacanciesResponseType>
     }
   );
   return { vacancies, isLoading, isError, error: error as AxiosError };

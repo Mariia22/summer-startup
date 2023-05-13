@@ -14,7 +14,6 @@ export const toggleFavouriteVacancy = (id: number): number[] => {
     ? localStorageInfo.filter((item) => item !== id)
     : [...localStorageInfo, id];
   return newFavourites;
-  //localStorage.setItem("favourite", JSON.stringify(newFavourites));
 };
 
 export const saveDataToLS = (name: string, data: any): void => {

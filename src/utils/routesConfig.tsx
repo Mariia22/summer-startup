@@ -1,27 +1,27 @@
-import EmptyPage from "../pages/EmptyPage";
 import FavouriteList from "../pages/FavouriteList";
-import Vacancy from "../pages/Vacancy";
-import VacanciesPage from "../pages/Vacancies/Vacancies";
+import VacancyPage from "../pages/VacancyPage/VacancyPage";
+import VacanciesPage from "../pages/VacanciesPage/Vacancies";
+import { Navigate } from "react-router-dom";
 
 export const routesConfig = [
   {
-    id: 1,
+    id: 0,
     path: "/",
+    element: <Navigate to="/vacancies/1" replace />
+  },
+  {
+    id: 1,
+    path: "vacancies/:page",
     element: <VacanciesPage />,
   },
   {
     id: 2,
-    path: "vacancies/:id",
-    element: <Vacancy />,
+    path: "vacancies/:page/vacancy/:id",
+    element: <VacancyPage />,
   },
   {
     id: 3,
     path: "favourites",
     element: <FavouriteList />,
-  },
-  {
-    id: 4,
-    path: "empty",
-    element: <EmptyPage />,
-  },
+  }
 ];
