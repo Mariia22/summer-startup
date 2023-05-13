@@ -4,12 +4,11 @@ import {
   Title,
   Image,
   useMantineTheme,
-  Text,
-  ActionIcon,
+  Text
 } from "@mantine/core";
-import { ReactComponent as FavouriteIcon } from "../assets/saveButton.svg";
 import { saveDataToLS, toggleFavouriteVacancy } from "../utils/helpers";
 import { useNavigate } from "react-router-dom";
+import FavouriteIconComponent from "../modules/FavouritesIcon/FavouritesIcon";
 
 type VacancyCardType = {
   id: number;
@@ -41,8 +40,7 @@ const VacancyCard: FC<VacancyCardType> = ({
   const navigate = useNavigate();
   const [isActive, setActive] = useState(isFavourite);
 
-  function handleChangeCard(event: MouseEvent) {
-    event.stopPropagation();
+  function handleChangeCard() {
     setActive(!isActive);
     const favourites = toggleFavouriteVacancy(id);
     saveDataToLS("favourite", favourites);
@@ -117,18 +115,7 @@ const VacancyCard: FC<VacancyCardType> = ({
         </Flex>
       </Flex>
       <Flex>
-        <ActionIcon variant="transparent" onClick={() => handleChangeCard}>
-          <FavouriteIcon
-            width={24}
-            height={24}
-            style={{
-              fill: isActive ? `${theme.colors.blue[1]}` : "none",
-              stroke: isActive
-                ? `${theme.colors.blue[1]}`
-                : `${theme.colors.grey[7]}`,
-            }}
-          />
-        </ActionIcon>
+        <FavouriteIconComponent isActive={isActive} handleChangeFavourite={handleChangeCard} />
       </Flex>
     </Flex>
   );
