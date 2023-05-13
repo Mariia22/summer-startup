@@ -25,3 +25,16 @@ export type VacanciesResponseType = {
 };
 
 export type VacanciesType = VacanciesResponseType & { isFavourite: boolean };
+
+export type VacancyCardType = {
+  id: number;
+  profession: string;
+  paymentFrom: number;
+  paymentTo: number;
+  currency: string;
+  typeOfWork: string;
+  town: string;
+  detailes: string;
+  isFavourite: boolean;
+  isDetailed?: boolean;
+};

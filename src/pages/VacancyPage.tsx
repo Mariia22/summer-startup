@@ -1,6 +1,6 @@
 import { Flex, useMantineTheme } from "@mantine/core";
 import { useLocation } from "react-router-dom";
-import VacancyCard from "../../components/VacancyCard";
+import VacancyCard from "../components/VacancyCard";
 import DOMPurify from "dompurify";
 
 const VacancyPage = () => {

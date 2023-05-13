@@ -1,6 +1,8 @@
-export const getFavouritesVacancies = (): number[] => {
+import { VacancyCardType } from "../pages/VacanciesPage/utils/types";
+
+export const getFavouritesVacancies = (): VacancyCardType[] => {
   const localStorageInfo = localStorage.getItem("favourite");
-  let favouriteVacancies: number[] = [];
+  let favouriteVacancies: VacancyCardType[] = [];
   localStorageInfo
     ? (favouriteVacancies = JSON.parse(localStorageInfo))
     : favouriteVacancies;
@@ -8,14 +10,19 @@ export const getFavouritesVacancies = (): number[] => {
   return favouriteVacancies;
 };
 
-export const toggleFavouriteVacancy = (id: number): number[] => {
-  const localStorageInfo: number[] = getFavouritesVacancies();
-  const newFavourites: number[] = localStorageInfo.includes(id)
-    ? localStorageInfo.filter((item) => item !== id)
-    : [...localStorageInfo, id];
+export const toggleFavouriteVacancy = (
+  vacancy: VacancyCardType
+): VacancyCardType[] => {
+  const localStorageInfo: VacancyCardType[] = getFavouritesVacancies();
+  const newFavourites: VacancyCardType[] = localStorageInfo.some(
+    (item) => item.id === vacancy.id
+  )
+    ? localStorageInfo.filter((item) => item.id !== vacancy.id)
+    : [...localStorageInfo, vacancy];
   return newFavourites;
 };
 
 export const saveDataToLS = (name: string, data: any): void => {
   localStorage.setItem(name, JSON.stringify(data));
 };
+

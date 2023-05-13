@@ -1,5 +1,5 @@
 import FavouriteList from "../pages/FavouriteList";
-import VacancyPage from "../pages/VacancyPage/VacancyPage";
+import VacancyPage from "../pages/VacancyPage";
 import VacanciesPage from "../pages/VacanciesPage/Vacancies";
 import { Navigate } from "react-router-dom";
 

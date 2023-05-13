@@ -9,40 +9,17 @@ import {
 import { saveDataToLS, toggleFavouriteVacancy } from "../utils/helpers";
 import { useNavigate } from "react-router-dom";
 import FavouriteIconComponent from "../modules/FavouritesIcon/FavouritesIcon";
+import { VacancyCardType } from "../pages/VacanciesPage/utils/types";
 
-type VacancyCardType = {
-  id: number;
-  profession: string;
-  paymentFrom: number;
-  paymentTo: number;
-  currency: string;
-  typeOfWork: string;
-  town: string;
-  detailes: string;
-  isFavourite: boolean;
-  isDetailed?: boolean;
-};
-
-const VacancyCard: FC<VacancyCardType> = ({
-  id,
-  profession,
-  paymentFrom,
-  paymentTo,
-  currency,
-  typeOfWork,
-  town,
-  detailes,
-  isFavourite,
-  isDetailed,
-
-}) => {
+const VacancyCard: FC<VacancyCardType> = (props) => {
+  const { id, profession, paymentFrom, paymentTo, currency, typeOfWork, town, detailes, isFavourite, isDetailed } = props;
   const theme = useMantineTheme();
   const navigate = useNavigate();
   const [isActive, setActive] = useState(isFavourite);
 
   function handleChangeCard() {
     setActive(!isActive);
-    const favourites = toggleFavouriteVacancy(id);
+    const favourites = toggleFavouriteVacancy({ ...props, isFavourite: isActive });
     saveDataToLS("favourite", favourites);
   }
 
