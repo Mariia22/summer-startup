@@ -23,5 +23,10 @@ export const routesConfig = [
     id: 3,
     path: "favourites",
     element: <FavouriteList />,
+  },
+  {
+    id: 4,
+    path: "favourites/vacancy/:id",
+    element: <VacancyPage />,
   }
 ];

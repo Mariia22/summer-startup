@@ -4,7 +4,6 @@ import { getFavouritesVacancies } from "../utils/helpers";
 import { Flex, Pagination, useMantineTheme } from "@mantine/core";
 import EmptyList from "../components/EmptyList";
 import VacancyCard from "../components/VacancyCard";
-import { numberOfPages } from "./VacanciesPage/utils/const";
 
 const FavouriteList = () => {
   const theme = useMantineTheme();
@@ -16,7 +15,12 @@ const FavouriteList = () => {
     setFavouriteVacancies(vacancies);
   }, [])
   return (
-    <Flex justify='center' sx={{ padding: '40px 40px 44px', backgroundColor: theme.colors.grey[5] }}>
+    <Flex justify='center'
+      sx={{
+        padding: '40px 40px 44px',
+        backgroundColor: theme.colors.grey[5],
+        height: '91vh'
+      }}>
       <Flex direction='column'>
         {favouriteVacancies.length > 0
           ? favouriteVacancies.map(vacancy => {
@@ -31,7 +35,7 @@ const FavouriteList = () => {
                 typeOfWork={vacancy.typeOfWork}
                 town={vacancy.town}
                 detailes={vacancy.detailes}
-                isFavourite={vacancy.isFavourite} />
+                isFavourite={true} />
             )
           })
           :
@@ -39,7 +43,7 @@ const FavouriteList = () => {
         }
         {favouriteVacancies.length > 0 && <Pagination
           value={activePage}
-          total={numberOfPages}
+          total={favouriteVacancies.length}
           position="center"
           styles={(theme) => ({
             control: {
