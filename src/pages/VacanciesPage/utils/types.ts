@@ -39,3 +39,12 @@ export type VacancyCardType = {
   isDetailed?: boolean;
   handleClick?: (vacancy: VacancyCardType) => void;
 };
+
+export type IndustriesType = {
+  title_rus: string;
+  url_rus: string;
+  title: string;
+  title_trimmed: string;
+  key: number;
+  positions: IndustriesType[];
+};

@@ -32,7 +32,7 @@ const VacanciesPage = () => {
       gap="28px"
       sx={{ padding: "40px 44px 162px", backgroundColor: theme.colors.grey[5] }}
     >
-      <FiltersForm />
+      <FiltersForm token={token} />
       <Flex direction="column" gap="1rem" sx={{ width: "53.6%" }}>
         <SearchForm />
         {isLoading && (

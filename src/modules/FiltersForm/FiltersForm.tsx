@@ -6,9 +6,16 @@ import {
   Select,
   useMantineTheme,
 } from "@mantine/core";
+import { useGetIndustries } from "./api/getIndustries";
+import { FC } from "react";
 
-const FiltersForm = () => {
+type FiltersFormType = {
+  token: string | undefined
+}
+
+const FiltersForm: FC<FiltersFormType> = ({ token }: FiltersFormType) => {
   const theme = useMantineTheme();
+  const { industries } = useGetIndustries(token ? token : null)
   return (
     <Flex
       direction="column"
@@ -33,7 +40,7 @@ const FiltersForm = () => {
       </Flex>
       <Title order={4}>Отрасль</Title>
       <Select
-        data={[]}
+        data={industries?.length ? [...industries] : []}
         placeholder="От"
         rightSection={<Image width={24} height={24} src="/down.svg" />}
         rightSectionWidth={50}
