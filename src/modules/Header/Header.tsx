@@ -9,7 +9,7 @@ const Header = () => {
       justify="flex-start"
       gap="280px"
       sx={{
-        height: '9vh',
+        height: "9vh",
         padding: "0 162px",
         backgroundColor: theme.white,
       }}

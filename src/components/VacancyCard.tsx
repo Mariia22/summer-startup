@@ -1,42 +1,53 @@
 import { FC, useState } from "react";
-import {
-  Flex,
-  Title,
-  Image,
-  useMantineTheme,
-  Text
-} from "@mantine/core";
+import { Flex, Title, Image, useMantineTheme, Text } from "@mantine/core";
 import { saveDataToLS, toggleFavouriteVacancy } from "../utils/helpers";
 import { useNavigate } from "react-router-dom";
 import FavouriteIconComponent from "../modules/FavouritesIcon/FavouritesIcon";
 import { VacancyCardType } from "../pages/VacanciesPage/utils/types";
 
 const VacancyCard: FC<VacancyCardType> = (props) => {
-  const { id, profession, paymentFrom, paymentTo, currency, typeOfWork, town, detailes, isFavourite, isDetailed } = props;
+  const {
+    id,
+    profession,
+    paymentFrom,
+    paymentTo,
+    currency,
+    typeOfWork,
+    town,
+    detailes,
+    isFavourite,
+    isDetailed,
+    handleClick,
+  } = props;
   const theme = useMantineTheme();
   const navigate = useNavigate();
   const [isActive, setActive] = useState(isFavourite);
 
   function handleChangeCard() {
     setActive(!isActive);
-    const favourites = toggleFavouriteVacancy({ ...props, isFavourite: isActive });
+    handleClick && handleClick(props);
+    const favourites = toggleFavouriteVacancy({
+      ...props,
+      isFavourite: !isActive,
+    });
     saveDataToLS("favourite", favourites);
   }
 
   function handleOpenCard() {
-    !isDetailed && navigate(`vacancy/${id}`, {
-      state: {
-        id,
-        profession,
-        paymentFrom,
-        paymentTo,
-        currency,
-        typeOfWork,
-        town,
-        detailes,
-        isFavourite
-      }
-    })
+    !isDetailed &&
+      navigate(`vacancy/${id}`, {
+        state: {
+          id,
+          profession,
+          paymentFrom,
+          paymentTo,
+          currency,
+          typeOfWork,
+          town,
+          detailes,
+          isFavourite,
+        },
+      });
   }
 
   return (
@@ -47,12 +58,15 @@ const VacancyCard: FC<VacancyCardType> = (props) => {
         backgroundColor: theme.white,
         border: `1px solid ${theme.colors.grey[1]}`,
         borderRadius: "12px",
-        cursor: "pointer"
+        cursor: "pointer",
       }}
       onClick={handleOpenCard}
     >
       <Flex direction="column" gap="12px">
-        <Title order={3} sx={{ color: isDetailed ? theme.black : theme.colors.blue[1] }}>
+        <Title
+          order={3}
+          sx={{ color: isDetailed ? theme.black : theme.colors.blue[1] }}
+        >
           {profession}
         </Title>
         <Flex>
@@ -92,7 +106,10 @@ const VacancyCard: FC<VacancyCardType> = (props) => {
         </Flex>
       </Flex>
       <Flex>
-        <FavouriteIconComponent isActive={isActive} handleChangeFavourite={handleChangeCard} />
+        <FavouriteIconComponent
+          isActive={isActive}
+          handleChangeFavourite={handleChangeCard}
+        />
       </Flex>
     </Flex>
   );

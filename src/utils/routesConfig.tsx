@@ -7,7 +7,7 @@ export const routesConfig = [
   {
     id: 0,
     path: "/",
-    element: <Navigate to="/vacancies/1" replace />
+    element: <Navigate to="/vacancies/1" replace />,
   },
   {
     id: 1,
@@ -21,12 +21,12 @@ export const routesConfig = [
   },
   {
     id: 3,
-    path: "favourites",
+    path: "favourites/:page",
     element: <FavouriteList />,
   },
   {
     id: 4,
-    path: "favourites/vacancy/:id",
+    path: "favourites/:page/vacancy/:id",
     element: <VacancyPage />,
-  }
+  },
 ];

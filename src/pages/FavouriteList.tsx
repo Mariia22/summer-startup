@@ -1,29 +1,65 @@
 import { useEffect, useState } from "react";
 import { VacancyCardType } from "./VacanciesPage/utils/types";
-import { getFavouritesVacancies } from "../utils/helpers";
-import { Flex, Pagination, useMantineTheme } from "@mantine/core";
+import {
+  getFavouritesVacancies,
+  toggleFavouriteVacancy,
+} from "../utils/helpers";
+import { Flex, useMantineTheme } from "@mantine/core";
 import EmptyList from "../components/EmptyList";
 import VacancyCard from "../components/VacancyCard";
+import { useNavigate, useParams } from "react-router-dom";
+import { vacanciesPerPage } from "./VacanciesPage/utils/const";
+import PaginationComponent from "../components/Pagination";
 
 const FavouriteList = () => {
   const theme = useMantineTheme();
-  const [favouriteVacancies, setFavouriteVacancies] = useState<VacancyCardType[]>([]);
-  const [activePage, setActivePage] = useState(1);
+  const navigate = useNavigate();
+  const { page } = useParams();
+  const [favouriteVacancies, setFavouriteVacancies] = useState<
+    VacancyCardType[]
+  >([]);
+  const [activePage, setActivePage] = useState(Number(page));
+  const total = Math.ceil(favouriteVacancies.length / vacanciesPerPage);
+  const start = (Number(activePage) - 1) * vacanciesPerPage;
+  const sliceVacancies = favouriteVacancies.slice(
+    start,
+    start + vacanciesPerPage
+  );
 
   useEffect(() => {
     const vacancies = getFavouritesVacancies();
     setFavouriteVacancies(vacancies);
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    navigate(`/favourites/${activePage}`);
+  }, [activePage, navigate]);
+
+  function handleClick(vacancy: VacancyCardType) {
+    const isActive = vacancy.isFavourite;
+    const vacansies = toggleFavouriteVacancy({
+      ...vacancy,
+      isFavourite: !isActive,
+    });
+    setFavouriteVacancies(vacansies);
+  }
+
+  function handleChangePage(value: number) {
+    setActivePage(value);
+  }
+
   return (
-    <Flex justify='center'
+    <Flex
+      justify="center"
       sx={{
-        padding: '40px 40px 44px',
+        padding: "40px 40px 44px",
         backgroundColor: theme.colors.grey[5],
-        height: '91vh'
-      }}>
-      <Flex direction='column'>
-        {favouriteVacancies.length > 0
-          ? favouriteVacancies.map(vacancy => {
+        height: "91vh",
+      }}
+    >
+      <Flex direction="column" gap="1rem">
+        {sliceVacancies.length > 0 ? (
+          sliceVacancies.map((vacancy) => {
             return (
               <VacancyCard
                 key={vacancy.id}
@@ -35,29 +71,24 @@ const FavouriteList = () => {
                 typeOfWork={vacancy.typeOfWork}
                 town={vacancy.town}
                 detailes={vacancy.detailes}
-                isFavourite={true} />
-            )
+                isFavourite={vacancy.isFavourite}
+                handleClick={handleClick}
+              />
+            );
           })
-          :
+        ) : (
           <EmptyList />
-        }
-        {favouriteVacancies.length > 0 && <Pagination
-          value={activePage}
-          total={favouriteVacancies.length}
-          position="center"
-          styles={(theme) => ({
-            control: {
-              marginTop: "12px",
-              "&[data-active]": {
-                backgroundColor: theme.colors.blue[1],
-              },
-            },
-          })}
-          onChange={setActivePage}
-        />}
+        )}
+        {favouriteVacancies.length > 0 && (
+          <PaginationComponent
+            value={activePage}
+            total={total}
+            handleChange={handleChangePage}
+          />
+        )}
       </Flex>
     </Flex>
-  )
+  );
 };
 
 export default FavouriteList;

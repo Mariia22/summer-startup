@@ -1,4 +1,3 @@
-import React from "react";
 import { Flex, Text, useMantineTheme } from "@mantine/core";
 import { Link } from "react-router-dom";
 import { navListConfig } from "./navListConfig";

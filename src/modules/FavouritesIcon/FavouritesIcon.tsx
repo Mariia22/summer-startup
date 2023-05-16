@@ -4,16 +4,19 @@ import { FC, SyntheticEvent } from "react";
 
 type FavouriteIconType = {
   isActive: boolean;
-  handleChangeFavourite: () => void
-}
+  handleChangeFavourite: () => void;
+};
 
-const FavouriteIconComponent: FC<FavouriteIconType> = ({ isActive, handleChangeFavourite }) => {
+const FavouriteIconComponent: FC<FavouriteIconType> = ({
+  isActive,
+  handleChangeFavourite,
+}) => {
   const theme = useMantineTheme();
 
   const handleChange = (e: SyntheticEvent) => {
     e.stopPropagation();
     handleChangeFavourite();
-  }
+  };
 
   return (
     <ActionIcon variant="transparent" onClick={handleChange}>
@@ -25,8 +28,9 @@ const FavouriteIconComponent: FC<FavouriteIconType> = ({ isActive, handleChangeF
           stroke: isActive
             ? `${theme.colors.blue[1]}`
             : `${theme.colors.grey[7]}`,
-        }} />
+        }}
+      />
     </ActionIcon>
-  )
-}
+  );
+};
 export default FavouriteIconComponent;

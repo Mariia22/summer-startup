@@ -2,11 +2,11 @@ export const navListConfig = [
   {
     id: 1,
     text: "Поиск Вакансий",
-    url: "/vacancies/1"
+    url: "/vacancies/1",
   },
   {
     id: 2,
     text: "Избранное",
-    url: "/favourites"
-  }
+    url: "/favourites/1",
+  },
 ];

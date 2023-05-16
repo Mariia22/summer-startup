@@ -37,4 +37,5 @@ export type VacancyCardType = {
   detailes: string;
   isFavourite: boolean;
   isDetailed?: boolean;
+  handleClick?: (vacancy: VacancyCardType) => void;
 };

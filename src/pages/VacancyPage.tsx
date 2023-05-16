@@ -6,7 +6,8 @@ import DOMPurify from "dompurify";
 const VacancyPage = () => {
   const theme = useMantineTheme();
   const location = useLocation();
-  const { id,
+  const {
+    id,
     profession,
     paymentFrom,
     paymentTo,
@@ -14,15 +15,19 @@ const VacancyPage = () => {
     typeOfWork,
     town,
     detailes,
-    isFavourite } = location.state;
+    isFavourite,
+  } = location.state;
 
   const cleanHTML = DOMPurify.sanitize(detailes, {
     USE_PROFILES: { html: true },
   });
 
   return (
-    <Flex justify='center' sx={{ padding: '40px 40px 50px', backgroundColor: theme.colors.grey[5] }}>
-      <Flex direction='column' sx={{ maxWidth: '54%' }} gap='20px'>
+    <Flex
+      justify="center"
+      sx={{ padding: "40px 40px 50px", backgroundColor: theme.colors.grey[5] }}
+    >
+      <Flex direction="column" sx={{ maxWidth: "54%" }} gap="20px">
         <VacancyCard
           id={id}
           profession={profession}
@@ -35,17 +40,19 @@ const VacancyPage = () => {
           isFavourite={isFavourite}
           isDetailed={true}
         />
-        <Flex sx={{
-          padding: "24px",
-          backgroundColor: theme.white,
-          border: `1px solid ${theme.colors.grey[1]}`,
-          borderRadius: "12px",
-        }}>
+        <Flex
+          sx={{
+            padding: "24px",
+            backgroundColor: theme.white,
+            border: `1px solid ${theme.colors.grey[1]}`,
+            borderRadius: "12px",
+          }}
+        >
           <div dangerouslySetInnerHTML={{ __html: cleanHTML }} />
         </Flex>
       </Flex>
     </Flex>
-  )
+  );
 };
 
 export default VacancyPage;

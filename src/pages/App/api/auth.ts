@@ -13,7 +13,7 @@ export const useAuthGetData = () => {
     data: authData,
     isLoading,
     isError,
-    error
+    error,
   } = useQuery(
     ["authData"],
     () => {
@@ -24,7 +24,7 @@ export const useAuthGetData = () => {
     },
     {
       retry: false,
-      select: (response) => response.data as AuthResponseType
+      select: (response) => response.data as AuthResponseType,
     }
   );
   return { authData, isLoading, isError, error: error as AxiosError };

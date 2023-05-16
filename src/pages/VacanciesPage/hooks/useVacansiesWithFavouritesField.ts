@@ -12,7 +12,7 @@ export const useVacansiesWithFavouritesField = (
   if (vacancies && vacancies.length > 0) {
     if (favouriteVacancies.length > 0) {
       vacanciesWithFavoriteFlag = vacancies.map((vacancy) => {
-        return favouriteVacancies.some(item => item.id === vacancy.id)
+        return favouriteVacancies.some((item) => item.id === vacancy.id)
           ? { ...vacancy, isFavourite: true }
           : { ...vacancy, isFavourite: false };
       });
@@ -26,6 +26,6 @@ export const useVacansiesWithFavouritesField = (
     vacanciesWithFavoriteFlag,
     isLoading,
     isError,
-    error
+    error,
   };
 };

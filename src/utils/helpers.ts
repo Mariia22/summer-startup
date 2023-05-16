@@ -22,7 +22,6 @@ export const toggleFavouriteVacancy = (
   return newFavourites;
 };
 
-export const saveDataToLS = (name: string, data: any): void => {
+export const saveDataToLS = (name: string, data: VacancyCardType[]): void => {
   localStorage.setItem(name, JSON.stringify(data));
 };
-
