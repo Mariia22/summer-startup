@@ -48,3 +48,51 @@ export type IndustriesType = {
   key: number;
   positions: IndustriesType[];
 };
+
+export type FilterStateType = {
+  search: string;
+  industry: string | null;
+  from: number | "";
+  to: number | "";
+};
+
+export type InputsNameType = "from" | "to";
+
+export enum ActionsTypes {
+  changeFrom = "changeFrom",
+  changeTo = "changeTo",
+  changeIndustry = "changeIndustry",
+  changeSearch = "changeSearch",
+  clearStateType = "clearStateType",
+}
+
+export type ChangeFromType = {
+  type: ActionsTypes.changeFrom;
+  payload: number | "";
+};
+
+export type ChangeToType = {
+  type: ActionsTypes.changeTo;
+  payload: number | "";
+};
+
+export type ChangeIndustryType = {
+  type: ActionsTypes.changeIndustry;
+  payload: string | null;
+};
+
+export type ClearStateType = {
+  type: ActionsTypes.clearStateType;
+};
+
+export type ChangeSearchType = {
+  type: ActionsTypes.changeSearch;
+  payload: string;
+};
+
+export type FilterActions =
+  | ChangeFromType
+  | ChangeToType
+  | ChangeIndustryType
+  | ChangeSearchType
+  | ClearStateType;

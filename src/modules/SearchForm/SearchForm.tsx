@@ -4,8 +4,13 @@ const SearchForm = () => {
   const theme = useMantineTheme();
   return (
     <TextInput
+      data-elem="search-input"
       icon={<Image width={16} height={16} src="/search.svg" />}
-      rightSection={<Button variant="filled">Поиск</Button>}
+      rightSection={
+        <Button variant="filled" data-elem="search-button">
+          Поиск
+        </Button>
+      }
       rightSectionWidth={120}
       styles={{
         input: {

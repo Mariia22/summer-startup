@@ -9,7 +9,7 @@ export const useGetIndustries = (token: string | null) => {
     data: industries,
     isLoading,
     isError,
-    error
+    error,
   } = useQuery(
     ["industries", token],
     () => {
@@ -27,7 +27,7 @@ export const useGetIndustries = (token: string | null) => {
           []
         );
         return catalogues;
-      }
+      },
     }
   );
   return { industries, isLoading, isError, error: error as AxiosError };

@@ -9,7 +9,7 @@ import EmptyList from "../components/EmptyList";
 import VacancyCard from "../components/VacancyCard";
 import { useNavigate, useParams } from "react-router-dom";
 import { vacanciesPerPage } from "./VacanciesPage/utils/const";
-import PaginationComponent from "../components/Pagination";
+import PaginationComponent from "../components/PaginationComponent";
 
 const FavouriteList = () => {
   const theme = useMantineTheme();
@@ -62,6 +62,7 @@ const FavouriteList = () => {
           sliceVacancies.map((vacancy) => {
             return (
               <VacancyCard
+                data-elem={`vacancy-${vacancy.id}`}
                 key={vacancy.id}
                 id={vacancy.id}
                 profession={vacancy.profession}

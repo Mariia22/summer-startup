@@ -29,6 +29,7 @@ const VacancyPage = () => {
     >
       <Flex direction="column" sx={{ maxWidth: "54%" }} gap="20px">
         <VacancyCard
+          data-elem={`vacancy-${id}`}
           id={id}
           profession={profession}
           paymentFrom={paymentFrom}

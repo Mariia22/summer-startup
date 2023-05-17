@@ -107,6 +107,7 @@ const VacancyCard: FC<VacancyCardType> = (props) => {
       </Flex>
       <Flex>
         <FavouriteIconComponent
+          data-elem={`vacancy-${id}-shortlist-button`}
           isActive={isActive}
           handleChangeFavourite={handleChangeCard}
         />
