@@ -69,6 +69,7 @@ export enum ActionsTypes {
   changeIndustry = "changeIndustry",
   changeSearch = "changeSearch",
   clearStateType = "clearStateType",
+  downloadFilter = "downloadFilter",
 }
 
 export type ChangeFromType = {
@@ -95,9 +96,15 @@ export type ChangeSearchType = {
   payload: string;
 };
 
+export type DownloadFiltersType = {
+  type: ActionsTypes.downloadFilter;
+  payload: FilterStateType;
+};
+
 export type FilterActions =
   | ChangeFromType
   | ChangeToType
   | ChangeIndustryType
   | ChangeSearchType
-  | ClearStateType;
+  | ClearStateType
+  | DownloadFiltersType;

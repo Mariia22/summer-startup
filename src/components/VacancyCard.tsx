@@ -1,9 +1,10 @@
-import { FC, useState } from "react";
+import { FC, useContext, useState } from "react";
 import { Flex, Title, Image, useMantineTheme, Text } from "@mantine/core";
 import { saveDataToLS, toggleFavouriteVacancy } from "../utils/helpers";
 import { useNavigate } from "react-router-dom";
 import FavouriteIconComponent from "../modules/FavouritesIcon/FavouritesIcon";
 import { VacancyCardType } from "../pages/VacanciesPage/utils/types";
+import { FilterContext } from "../pages/VacanciesPage/utils/context";
 
 const VacancyCard: FC<VacancyCardType> = (props) => {
   const {
@@ -22,6 +23,7 @@ const VacancyCard: FC<VacancyCardType> = (props) => {
   const theme = useMantineTheme();
   const navigate = useNavigate();
   const [isActive, setActive] = useState(isFavourite);
+  const { state } = useContext(FilterContext);
 
   function handleChangeCard() {
     setActive(!isActive);
@@ -34,6 +36,7 @@ const VacancyCard: FC<VacancyCardType> = (props) => {
   }
 
   function handleOpenCard() {
+    saveDataToLS("filters", state);
     !isDetailed &&
       navigate(`vacancy/${id}`, {
         state: {

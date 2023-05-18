@@ -1,4 +1,7 @@
-import { VacancyCardType } from "../pages/VacanciesPage/utils/types";
+import {
+  FilterStateType,
+  VacancyCardType,
+} from "../pages/VacanciesPage/utils/types";
 
 export const getFavouritesVacancies = (): VacancyCardType[] => {
   const localStorageInfo = localStorage.getItem("favourite");
@@ -22,6 +25,9 @@ export const toggleFavouriteVacancy = (
   return newFavourites;
 };
 
-export const saveDataToLS = (name: string, data: VacancyCardType[]): void => {
+export const saveDataToLS = (
+  name: string,
+  data: VacancyCardType[] | FilterStateType
+): void => {
   localStorage.setItem(name, JSON.stringify(data));
 };

@@ -1,7 +1,7 @@
 import { Flex, Loader, Text, useMantineTheme } from "@mantine/core";
 import SearchForm from "../../modules/SearchForm/SearchForm";
 import FiltersForm from "../../modules/FiltersForm/FiltersForm";
-import { VacanciesType } from "./utils/types";
+import { ActionsTypes, VacanciesType } from "./utils/types";
 import VacancyCard from "../../components/VacancyCard";
 import { useEffect, useReducer, useState } from "react";
 import {
@@ -15,6 +15,8 @@ import PaginationComponent from "../../components/PaginationComponent";
 import { FilterContext } from "./utils/context";
 import { reducer } from "./utils/reducer";
 import { useGetIndustries } from "../../modules/FiltersForm/api/getIndustries";
+import EmptyList from "../../components/EmptyList";
+import { saveDataToLS } from "../../utils/helpers";
 
 const VacanciesPage = () => {
   const token = localStorage.getItem("token")?.toString();
@@ -43,6 +45,19 @@ const VacanciesPage = () => {
       : Math.ceil(maxNumberOfResultsFromAPI / vacanciesPerPage);
 
   useEffect(() => {
+    const filters = localStorage.getItem("filters")?.toString();
+    if (filters) {
+      const payload = JSON.parse(filters);
+      const { search, industry, from, to } = payload;
+      dispatch({ type: ActionsTypes.downloadFilter, payload });
+      setKeyword(search);
+      setIndustry(industry);
+      setPaymentFrom(from);
+      setPaymentTo(to);
+    }
+  }, []);
+
+  useEffect(() => {
     navigate(`/vacancies/${activePage}`);
   }, [activePage, navigate]);
 
@@ -68,6 +83,7 @@ const VacanciesPage = () => {
     setIndustry("");
     setPaymentFrom("");
     setPaymentTo("");
+    saveDataToLS("filters", state);
   }
 
   return (
@@ -119,7 +135,10 @@ const VacanciesPage = () => {
                 />
               );
             })}
-          {!isLoading && (
+          {!isLoading &&
+            vacanciesWithFavoriteFlag &&
+            vacanciesWithFavoriteFlag.length === 0 && <EmptyList />}
+          {!isLoading && vacanciesWithFavoriteFlag.length !== 0 && (
             <PaginationComponent
               value={activePage}
               total={numberOfPages}
