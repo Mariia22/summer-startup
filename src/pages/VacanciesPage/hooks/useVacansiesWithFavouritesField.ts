@@ -1,29 +1,51 @@
 import { getFavouritesVacancies } from "../../../utils/helpers";
-import { useGetVacancies } from "../api/getVacancies";
-import { VacanciesType, VacancyCardType } from "../utils/types";
+import { useGetVacanciesByFilter } from "../api/getVacancies";
+import {
+  VacanciesResponseType,
+  VacanciesType,
+  VacancyCardType,
+} from "../utils/types";
 
 export const useVacansiesWithFavouritesField = (
   token: string | null,
-  page: number
+  page: number,
+  keyword?: string,
+  catalogues?: string | null,
+  paymentFrom?: number | string,
+  paymentTo?: number | string
 ) => {
-  const { vacancies, isLoading, isError, error } = useGetVacancies(token, page);
+  const { vacancies, isLoading, isError, error } = useGetVacanciesByFilter(
+    token,
+    page,
+    catalogues,
+    keyword,
+    paymentFrom,
+    paymentTo
+  );
   const favouriteVacancies: VacancyCardType[] = getFavouritesVacancies();
   let vacanciesWithFavoriteFlag: VacanciesType[] = [];
-  if (vacancies && vacancies.length > 0) {
+  const objects = vacancies?.objects;
+  const total = vacancies?.total;
+  if (objects && objects.length > 0) {
     if (favouriteVacancies.length > 0) {
-      vacanciesWithFavoriteFlag = vacancies.map((vacancy) => {
-        return favouriteVacancies.some((item) => item.id === vacancy.id)
-          ? { ...vacancy, isFavourite: true }
-          : { ...vacancy, isFavourite: false };
-      });
+      vacanciesWithFavoriteFlag = objects.map(
+        (vacancy: VacanciesResponseType) => {
+          return favouriteVacancies.some(
+            (item: VacancyCardType) => item.id === vacancy.id
+          )
+            ? { ...vacancy, isFavourite: true }
+            : { ...vacancy, isFavourite: false };
+        }
+      );
     } else {
-      vacanciesWithFavoriteFlag = vacancies.map((item) => {
+      vacanciesWithFavoriteFlag = objects.map((item: VacanciesResponseType) => {
         return { ...item, isFavourite: false };
       });
     }
   }
   return {
     vacanciesWithFavoriteFlag,
+    total,
     isLoading,
     isError,
     error,

@@ -13,11 +13,13 @@ import ClearButton from "../../components/ClearButton";
 type FiltersFormType = {
   industries: SelectItem[] | undefined;
   handleClick: () => void;
+  handleReset: () => void;
 };
 
 const FiltersForm: FC<FiltersFormType> = ({
   industries,
   handleClick,
+  handleReset,
 }: FiltersFormType) => {
   const theme = useMantineTheme();
   return (
@@ -35,7 +37,7 @@ const FiltersForm: FC<FiltersFormType> = ({
     >
       <Flex sx={{ marginBottom: "12px" }}>
         <Title order={2}>Фильтры</Title>
-        <ClearButton />
+        <ClearButton handleClick={handleReset} />
       </Flex>
       <Title order={4}>Отрасль</Title>
       <SelectComponent data={industries} />

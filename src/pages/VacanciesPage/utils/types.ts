@@ -6,6 +6,11 @@ export type AuthResponseType = {
   token_type: string;
 };
 
+export type ResponseType = {
+  objects: VacanciesResponseType[];
+  total: number;
+};
+
 export type VacanciesResponseType = {
   id: number;
   profession: string;

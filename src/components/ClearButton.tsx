@@ -1,13 +1,18 @@
 import { Button, Image } from "@mantine/core";
-import { useContext } from "react";
+import { FC, useContext } from "react";
 import { FilterContext } from "../pages/VacanciesPage/utils/context";
 import { ActionsTypes } from "../pages/VacanciesPage/utils/types";
 
-const ClearButton = () => {
+type ClearButtonType = {
+  handleClick: () => void;
+};
+
+const ClearButton: FC<ClearButtonType> = ({ handleClick }) => {
   const { dispatch } = useContext(FilterContext);
 
   function clearFilters() {
     dispatch({ type: ActionsTypes.clearStateType });
+    handleClick();
   }
 
   return (

@@ -16,9 +16,7 @@ export function reducer(state: FilterStateType, action: FilterActions) {
       return { ...state, search: action.payload };
       break;
     case ActionsTypes.clearStateType:
-      return {
-        ...initialState,
-      };
+      return { ...initialState, search: state.search };
       break;
     default:
       throw Error("Unknown action");

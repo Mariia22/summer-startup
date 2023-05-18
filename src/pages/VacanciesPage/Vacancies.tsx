@@ -4,7 +4,11 @@ import FiltersForm from "../../modules/FiltersForm/FiltersForm";
 import { VacanciesType } from "./utils/types";
 import VacancyCard from "../../components/VacancyCard";
 import { useEffect, useReducer, useState } from "react";
-import { initialState, numberOfPages } from "./utils/const";
+import {
+  initialState,
+  maxNumberOfResultsFromAPI,
+  vacanciesPerPage,
+} from "./utils/const";
 import { useVacansiesWithFavouritesField } from "./hooks/useVacansiesWithFavouritesField";
 import { useNavigate, useParams } from "react-router-dom";
 import PaginationComponent from "../../components/PaginationComponent";
@@ -18,10 +22,25 @@ const VacanciesPage = () => {
   const navigate = useNavigate();
   const { page } = useParams();
   const [activePage, setActivePage] = useState(Number(page));
+  const [keyword, setKeyword] = useState("");
+  const [industry, setIndustry] = useState<string | null>("");
+  const [paymentFrom, setPaymentFrom] = useState<number | string>("");
+  const [paymentTo, setPaymentTo] = useState<number | string>("");
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { vacanciesWithFavoriteFlag, isLoading, isError, error } =
-    useVacansiesWithFavouritesField(token ? token : null, activePage - 1);
+  const { vacanciesWithFavoriteFlag, total, isLoading, isError, error } =
+    useVacansiesWithFavouritesField(
+      token ? token : null,
+      activePage - 1,
+      keyword,
+      industry,
+      paymentFrom,
+      paymentTo
+    );
   const { industries } = useGetIndustries(token ? token : null);
+  const numberOfPages =
+    total && total < maxNumberOfResultsFromAPI
+      ? Math.ceil(total / vacanciesPerPage)
+      : Math.ceil(maxNumberOfResultsFromAPI / vacanciesPerPage);
 
   useEffect(() => {
     navigate(`/vacancies/${activePage}`);
@@ -32,7 +51,23 @@ const VacanciesPage = () => {
   }
 
   function applyFiltersToVacancies() {
-    console.log(state);
+    const { industry, from, to } = state;
+    setActivePage(1);
+    setIndustry(industry);
+    setPaymentFrom(from);
+    setPaymentTo(to);
+  }
+
+  function searchVacancies() {
+    setActivePage(1);
+    setKeyword(state.search);
+  }
+
+  function clearAllFilters() {
+    setActivePage(1);
+    setIndustry("");
+    setPaymentFrom("");
+    setPaymentTo("");
   }
 
   return (
@@ -43,14 +78,16 @@ const VacanciesPage = () => {
         sx={{
           padding: "40px 44px 162px",
           backgroundColor: theme.colors.grey[5],
+          minHeight: "91vh",
         }}
       >
         <FiltersForm
           industries={industries}
           handleClick={applyFiltersToVacancies}
+          handleReset={clearAllFilters}
         />
         <Flex direction="column" gap="1rem" sx={{ width: "53.6%" }}>
-          <SearchForm />
+          <SearchForm handleClick={searchVacancies} />
           {isLoading && (
             <Loader
               size="xl"
@@ -82,11 +119,13 @@ const VacanciesPage = () => {
                 />
               );
             })}
-          <PaginationComponent
-            value={activePage}
-            total={numberOfPages}
-            handleChange={handleChangePage}
-          />
+          {!isLoading && (
+            <PaginationComponent
+              value={activePage}
+              total={numberOfPages}
+              handleChange={handleChangePage}
+            />
+          )}
         </Flex>
       </Flex>
     </FilterContext.Provider>
