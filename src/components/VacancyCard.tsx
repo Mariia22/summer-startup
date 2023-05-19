@@ -45,7 +45,7 @@ const VacancyCard: FC<VacancyCardType> = (props) => {
           typeOfWork,
           town,
           detailes,
-          isFavourite,
+          isFavourite: isActive,
         },
       });
   }

@@ -15,6 +15,7 @@ const Navbar = () => {
             style={({ isActive }) => {
               return {
                 lineHeight: "1.25rem",
+                textDecoration: "none",
                 color: isActive
                   ? `${theme.colors.blue[1]}`
                   : `${theme.colors.grey[6]}`,
