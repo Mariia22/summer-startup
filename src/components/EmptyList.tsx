@@ -1,8 +1,14 @@
 import { Flex, Image, Text, useMantineTheme } from "@mantine/core";
+import { FC } from "react";
 import { Link } from "react-router-dom";
 
-const EmptyList = () => {
+type EmptyListType = {
+  handleClick?: () => void;
+};
+
+const EmptyList: FC<EmptyListType> = ({ handleClick }) => {
   const theme = useMantineTheme();
+
   return (
     <Flex
       direction="column"
@@ -27,6 +33,7 @@ const EmptyList = () => {
           backgroundColor: `${theme.colors.blue[5]}`,
           color: `${theme.colors.blue[0]}`,
         }}
+        onClick={handleClick}
       >
         Поиск Вакансий
       </Link>

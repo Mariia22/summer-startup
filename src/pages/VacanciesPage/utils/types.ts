@@ -68,8 +68,8 @@ export enum ActionsTypes {
   changeTo = "changeTo",
   changeIndustry = "changeIndustry",
   changeSearch = "changeSearch",
-  clearStateType = "clearStateType",
-  downloadFilter = "downloadFilter",
+  clearFiltersType = "clearFiltersType",
+  clearAllFiltersAndSearchType = "clearAllFiltersAndSearchType",
 }
 
 export type ChangeFromType = {
@@ -88,7 +88,7 @@ export type ChangeIndustryType = {
 };
 
 export type ClearStateType = {
-  type: ActionsTypes.clearStateType;
+  type: ActionsTypes.clearFiltersType;
 };
 
 export type ChangeSearchType = {
@@ -96,9 +96,8 @@ export type ChangeSearchType = {
   payload: string;
 };
 
-export type DownloadFiltersType = {
-  type: ActionsTypes.downloadFilter;
-  payload: FilterStateType;
+export type ClearAllFiltersAndSearchType = {
+  type: ActionsTypes.clearAllFiltersAndSearchType;
 };
 
 export type FilterActions =
@@ -107,4 +106,4 @@ export type FilterActions =
   | ChangeIndustryType
   | ChangeSearchType
   | ClearStateType
-  | DownloadFiltersType;
+  | ClearAllFiltersAndSearchType;

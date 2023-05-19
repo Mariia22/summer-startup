@@ -15,11 +15,11 @@ export function reducer(state: FilterStateType, action: FilterActions) {
     case ActionsTypes.changeSearch:
       return { ...state, search: action.payload };
       break;
-    case ActionsTypes.clearStateType:
+    case ActionsTypes.clearFiltersType:
       return { ...initialState, search: state.search };
       break;
-    case ActionsTypes.downloadFilter:
-      return { ...action.payload };
+    case ActionsTypes.clearAllFiltersAndSearchType:
+      return { ...initialState };
       break;
     default:
       throw Error("Unknown action");
