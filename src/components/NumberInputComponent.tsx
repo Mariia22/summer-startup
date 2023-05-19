@@ -1,10 +1,7 @@
 import { NumberInput } from "@mantine/core";
 import { FC, useContext } from "react";
-import {
-  InputsNameType,
-  ActionsTypes,
-} from "../pages/VacanciesPage/utils/types";
-import { FilterContext } from "../pages/VacanciesPage/utils/context";
+import { FilterContext } from "../pages/App/utils/context";
+import { ActionsTypes, InputsNameType } from "../pages/App/utils/types";
 
 type NumberInputType = {
   name: InputsNameType;

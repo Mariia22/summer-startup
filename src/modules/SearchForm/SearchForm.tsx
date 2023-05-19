@@ -1,7 +1,7 @@
 import { TextInput, Image, Button, useMantineTheme } from "@mantine/core";
 import { ChangeEvent, FC, useContext } from "react";
-import { FilterContext } from "../../pages/VacanciesPage/utils/context";
-import { ActionsTypes } from "../../pages/VacanciesPage/utils/types";
+import { FilterContext } from "../../pages/App/utils/context";
+import { ActionsTypes } from "../../pages/App/utils/types";
 
 type SearchFormType = {
   handleClick: () => void;

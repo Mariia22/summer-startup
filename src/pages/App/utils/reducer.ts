@@ -1,4 +1,4 @@
-import { initialState } from "./const";
+import { initialState } from "./context";
 import { ActionsTypes, FilterActions, FilterStateType } from "./types";
 
 export function reducer(state: FilterStateType, action: FilterActions) {

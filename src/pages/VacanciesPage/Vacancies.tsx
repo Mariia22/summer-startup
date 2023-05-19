@@ -1,7 +1,7 @@
 import { Flex, Loader, Text, useMantineTheme } from "@mantine/core";
 import SearchForm from "../../modules/SearchForm/SearchForm";
 import FiltersForm from "../../modules/FiltersForm/FiltersForm";
-import { ActionsTypes, VacanciesType } from "./utils/types";
+import { VacanciesType } from "./utils/types";
 import VacancyCard from "../../components/VacancyCard";
 import { useContext, useEffect, useState } from "react";
 import { maxNumberOfResultsFromAPI, vacanciesPerPage } from "./utils/const";
@@ -10,7 +10,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import PaginationComponent from "../../components/PaginationComponent";
 import { useGetIndustries } from "../../modules/FiltersForm/api/getIndustries";
 import EmptyList from "../../components/EmptyList";
-import { FilterContext } from "./utils/context";
+import { FilterContext } from "../App/utils/context";
+import { ActionsTypes } from "../App/utils/types";
 
 const VacanciesPage = () => {
   const token = localStorage.getItem("token")?.toString();
@@ -73,20 +74,16 @@ const VacanciesPage = () => {
     setKeyword(state.search);
   }
 
-  function clearFilters() {
-    changeAllFilters("", "", "");
-  }
-
   function clearAllFilters() {
     handleChangePage(1);
     dispatch({ type: ActionsTypes.clearFiltersType });
-    clearFilters();
+    changeAllFilters("", "", "");
   }
 
   function clearFiltersAndSearch() {
     handleChangePage(1);
     dispatch({ type: ActionsTypes.clearAllFiltersAndSearchType });
-    clearFilters();
+    changeAllFilters("", "", "");
     setKeyword("");
   }
 

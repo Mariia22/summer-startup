@@ -1,6 +1,12 @@
 import React, { createContext } from "react";
-import { FilterActions, FilterStateType } from "./types";
-import { initialState } from "./const";
+import { FilterStateType, FilterActions } from "./types";
+
+export const initialState: FilterStateType = {
+  search: "",
+  industry: "",
+  from: "",
+  to: "",
+};
 
 export const FilterContext = createContext<{
   state: FilterStateType;

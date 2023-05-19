@@ -2,10 +2,9 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import { routesConfig } from "../../utils/routesConfig";
 import { useAuthGetData } from "./api/auth";
 import Header from "../../modules/Header/Header";
-import { FilterContext } from "../VacanciesPage/utils/context";
+import { FilterContext, initialState } from "./utils/context";
 import { useReducer } from "react";
-import { reducer } from "../VacanciesPage/utils/reducer";
-import { initialState } from "../VacanciesPage/utils/const";
+import { reducer } from "./utils/reducer";
 
 const App = () => {
   const { authData } = useAuthGetData();

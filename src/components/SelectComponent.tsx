@@ -1,7 +1,7 @@
 import { Select, SelectItem, Image } from "@mantine/core";
 import { FC, useContext } from "react";
-import { FilterContext } from "../pages/VacanciesPage/utils/context";
-import { ActionsTypes } from "../pages/VacanciesPage/utils/types";
+import { FilterContext } from "../pages/App/utils/context";
+import { ActionsTypes } from "../pages/App/utils/types";
 
 type SelectType = {
   data: SelectItem[] | undefined;
