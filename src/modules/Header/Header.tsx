@@ -7,11 +7,19 @@ const Header = () => {
   return (
     <Flex
       justify="flex-start"
-      gap="280px"
       sx={{
         height: "9vh",
         padding: "0 162px",
         backgroundColor: theme.white,
+        gap: "280px",
+        '@media (max-width: 63em)': {
+          padding: "0 80px",
+          gap: "30%",
+        },
+        '@media (max-width: 47em)': {
+          padding: "0 30px",
+          gap: "10%",
+        },
       }}
     >
       <Logo />

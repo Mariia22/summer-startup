@@ -9,6 +9,7 @@ import { FC } from "react";
 import NumberInputComponent from "../../components/NumberInputComponent";
 import SelectComponent from "../../components/SelectComponent";
 import ClearButton from "../../components/ClearButton";
+import TitleOrder4Component from "../../components/TitleOrder4Component";
 
 type FiltersFormType = {
   industries: SelectItem[] | undefined;
@@ -33,15 +34,26 @@ const FiltersForm: FC<FiltersFormType> = ({
         border: `1px solid ${theme.colors.grey[1]}`,
         borderRadius: "12px",
         backgroundColor: theme.white,
+        '@media (max-width: 63em)': {
+          width: "250px",
+          maxHeight: "60vh",
+        },
+        '@media (max-width: 37em)': {
+          width: "100%"
+        },
       }}
     >
       <Flex sx={{ marginBottom: "12px" }}>
-        <Title order={2}>Фильтры</Title>
+        <Title order={2} sx={{
+          '@media (max-width: 63em)': {
+            fontSize: theme.fontSizes.md,
+          }
+        }}>Фильтры</Title>
         <ClearButton handleClick={handleReset} />
       </Flex>
-      <Title order={4}>Отрасль</Title>
+      <TitleOrder4Component>Отрасль</TitleOrder4Component>
       <SelectComponent data={industries} />
-      <Title order={4}>Оклад</Title>
+      <TitleOrder4Component>Оклад</TitleOrder4Component>
       <NumberInputComponent
         dataElem="salary-from-input"
         placeholder="От"

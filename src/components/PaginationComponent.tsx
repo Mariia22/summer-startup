@@ -1,4 +1,5 @@
 import { Pagination } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { FC } from "react";
 
 type PaginationType = {
@@ -11,10 +12,13 @@ const PaginationComponent: FC<PaginationType> = ({
   total,
   handleChange,
 }) => {
+  const smallScreen = useMediaQuery('(max-width: 63em)');
   return (
     <Pagination
       value={value}
       total={total}
+      size={smallScreen ? "xs" : "md"}
+      spacing={smallScreen ? 1 : "md"}
       position="center"
       styles={(theme) => ({
         control: {
@@ -24,6 +28,9 @@ const PaginationComponent: FC<PaginationType> = ({
           },
           "&:not([data-disabled]):hover": {
             color: theme.black,
+          },
+          [`@media (max-width: 47em)`]: {
+            fontSize: theme.fontSizes.sm
           },
         },
       })}

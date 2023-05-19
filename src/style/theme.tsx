@@ -5,6 +5,17 @@ export const theme: MantineThemeOverride = {
   fontFamily: "Inter",
   lineHeight: "1.4rem",
   defaultRadius: "8px",
+  breakpoints: {
+    xs: '30em',
+    sm: '48em',
+    md: '64em',
+    lg: '74em',
+    xl: '90em',
+  },
+  fontSizes: {
+    sm: '0.75em',
+    md: '1rem',
+  },
   headings: {
     fontWeight: 700,
     sizes: {

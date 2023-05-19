@@ -95,6 +95,13 @@ const VacanciesPage = () => {
         padding: "40px 44px 162px",
         backgroundColor: theme.colors.grey[5],
         minHeight: "91vh",
+        '@media (max-width: 63em)': {
+          fontSize: theme.fontSizes.sm,
+        },
+        '@media (max-width: 37em)': {
+          flexDirection: "column",
+          alignItems: "center"
+        },
       }}
     >
       {vacanciesWithFavoriteFlag && vacanciesWithFavoriteFlag.length !== 0 && (
@@ -104,7 +111,11 @@ const VacanciesPage = () => {
           handleReset={clearAllFilters}
         />
       )}
-      <Flex direction="column" gap="1rem" sx={{ width: "53.6%" }}>
+      <Flex direction="column" sx={{
+        width: "53.6%",
+        gap: "1rem",
+        '@media (max-width: 37em)': { width: "100%", gap: "0.3rem" }
+      }}>
         {vacanciesWithFavoriteFlag &&
           vacanciesWithFavoriteFlag.length !== 0 && (
             <SearchForm handleClick={searchVacancies} />

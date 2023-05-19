@@ -4,6 +4,7 @@ import { saveDataToLS, toggleFavouriteVacancy } from "../utils/helpers";
 import { useNavigate } from "react-router-dom";
 import FavouriteIconComponent from "../modules/FavouritesIcon/FavouritesIcon";
 import { VacancyCardType } from "../pages/VacanciesPage/utils/types";
+import { useMediaQuery } from "@mantine/hooks";
 
 const VacancyCard: FC<VacancyCardType> = (props) => {
   const {
@@ -22,6 +23,7 @@ const VacancyCard: FC<VacancyCardType> = (props) => {
   const theme = useMantineTheme();
   const navigate = useNavigate();
   const [isActive, setActive] = useState(isFavourite);
+  const smallScreen = useMediaQuery('(max-width: 47em)');
 
   function handleChangeCard() {
     setActive(!isActive);
@@ -65,11 +67,17 @@ const VacancyCard: FC<VacancyCardType> = (props) => {
       <Flex direction="column" gap="12px">
         <Title
           order={3}
-          sx={{ color: isDetailed ? theme.black : theme.colors.blue[1] }}
+          sx={{
+            color: isDetailed ? theme.black : theme.colors.blue[1],
+            '@media (max-width: 63em)': {
+              fontSize: theme.fontSizes.md,
+            }
+          }}
         >
           {profession}
         </Title>
-        <Flex>
+        <Flex
+          sx={{ '@media (max-width: 37em)': { flexDirection: "column" } }}>
           {paymentFrom <= 0 ? (
             <Text fw={600}>з/п по договоренности</Text>
           ) : paymentTo > 0 ? (
@@ -81,7 +89,7 @@ const VacancyCard: FC<VacancyCardType> = (props) => {
               з/п от {paymentFrom} {currency}
             </Text>
           )}
-          <Text
+          {!smallScreen && <Text
             span
             sx={{
               fontFamily: "Poppins",
@@ -92,7 +100,7 @@ const VacancyCard: FC<VacancyCardType> = (props) => {
             }}
           >
             &bull;
-          </Text>
+          </Text>}
           <Text fw={400}>{typeOfWork}</Text>
         </Flex>
         <Flex align="center">

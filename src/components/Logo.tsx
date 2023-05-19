@@ -1,8 +1,11 @@
 import { Flex, Title, Image, useMantineTheme } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { Link } from "react-router-dom";
 
 const Logo = () => {
   const theme = useMantineTheme();
+  const smallScreen = useMediaQuery('(max-width: 47em)');
+
   return (
     <Link
       to="/vacancies/1"
@@ -22,8 +25,8 @@ const Logo = () => {
             marginLeft: "12px",
             letterSpacing: "-0.02em",
             color: theme.colors.grey[6],
+            fontSize: smallScreen ? "1rem" : "1.5rem"
           }}
-          fz="1.5rem"
           fw={600}
         >
           Jobored

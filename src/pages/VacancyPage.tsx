@@ -2,6 +2,7 @@ import { Flex, useMantineTheme } from "@mantine/core";
 import { useLocation } from "react-router-dom";
 import VacancyCard from "../components/VacancyCard";
 import DOMPurify from "dompurify";
+import { useMediaQuery } from "@mantine/hooks";
 
 const VacancyPage = () => {
   const theme = useMantineTheme();
@@ -17,6 +18,7 @@ const VacancyPage = () => {
     detailes,
     isFavourite,
   } = location.state;
+  const smallScreen = useMediaQuery('(max-width: 63em)');
 
   const cleanHTML = DOMPurify.sanitize(detailes, {
     USE_PROFILES: { html: true },
@@ -25,9 +27,9 @@ const VacancyPage = () => {
   return (
     <Flex
       justify="center"
-      sx={{ padding: "40px 40px 50px", backgroundColor: theme.colors.grey[5] }}
+      sx={{ padding: smallScreen ? "20px" : "40px 40px 50px", backgroundColor: theme.colors.grey[5] }}
     >
-      <Flex direction="column" sx={{ maxWidth: "54%" }} gap="20px">
+      <Flex direction="column" sx={{ maxWidth: smallScreen ? "100%" : "54%" }} gap="20px">
         <VacancyCard
           data-elem={`vacancy-${id}`}
           id={id}
@@ -43,7 +45,8 @@ const VacancyPage = () => {
         />
         <Flex
           sx={{
-            padding: "24px",
+            fontSize: smallScreen ? "0.7rem" : "1rem",
+            padding: smallScreen ? "0px 10px" : "24px",
             backgroundColor: theme.white,
             border: `1px solid ${theme.colors.grey[1]}`,
             borderRadius: "12px",
