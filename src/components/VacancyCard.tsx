@@ -56,7 +56,7 @@ const VacancyCard: FC<VacancyCardType> = (props) => {
     <Flex
       justify="space-between"
       sx={{
-        padding: "24px",
+        padding: "20px 18px 20px 20px",
         backgroundColor: theme.white,
         border: `1px solid ${theme.colors.grey[1]}`,
         borderRadius: "12px",

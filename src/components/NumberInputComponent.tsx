@@ -31,6 +31,10 @@ const NumberInputComponent: FC<NumberInputType> = ({
       value={state[name]}
       onChange={(value) => handleChange(value)}
       styles={(theme) => ({
+        input: {
+          height: "42px",
+          fontSize: "0.875rem"
+        },
         control: {
           width: "12px",
           height: "12px",

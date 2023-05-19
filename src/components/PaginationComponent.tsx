@@ -18,11 +18,11 @@ const PaginationComponent: FC<PaginationType> = ({
       value={value}
       total={total}
       size={smallScreen ? "xs" : "md"}
-      spacing={smallScreen ? 1 : "md"}
+      spacing={smallScreen ? 1 : 4}
       position="center"
       styles={(theme) => ({
         control: {
-          marginTop: "12px",
+          borderRadius: "4px",
           "&[data-active]": {
             backgroundColor: theme.colors.blue[1],
           },

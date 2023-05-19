@@ -74,6 +74,7 @@ export const theme: MantineThemeOverride = {
             lineHeight: "1.31rem",
             color: theme.colors.grey[3],
             height: "1.5rem",
+            padding: "0rem"
           },
         }),
       },

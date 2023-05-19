@@ -29,7 +29,7 @@ const VacancyPage = () => {
       justify="center"
       sx={{ padding: smallScreen ? "20px" : "40px 40px 50px", backgroundColor: theme.colors.grey[5] }}
     >
-      <Flex direction="column" sx={{ maxWidth: smallScreen ? "100%" : "54%" }} gap="20px">
+      <Flex direction="column" sx={{ maxWidth: smallScreen ? "100%" : "54%" }} gap="16px">
         <VacancyCard
           data-elem={`vacancy-${id}`}
           id={id}

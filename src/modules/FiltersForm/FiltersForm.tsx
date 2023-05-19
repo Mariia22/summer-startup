@@ -26,11 +26,11 @@ const FiltersForm: FC<FiltersFormType> = ({
   return (
     <Flex
       direction="column"
-      gap="20px"
+      gap="8px"
       sx={{
         width: "315px",
-        maxHeight: "50vh",
-        padding: "20px",
+        maxHeight: "47vh",
+        padding: "15px 20px",
         border: `1px solid ${theme.colors.grey[1]}`,
         borderRadius: "12px",
         backgroundColor: theme.white,
@@ -43,12 +43,8 @@ const FiltersForm: FC<FiltersFormType> = ({
         },
       }}
     >
-      <Flex sx={{ marginBottom: "12px" }}>
-        <Title order={2} sx={{
-          '@media (max-width: 63em)': {
-            fontSize: theme.fontSizes.md,
-          }
-        }}>Фильтры</Title>
+      <Flex justify="space-between">
+        <Title order={2} sx={{ '@media (max-width: 63em)': { fontSize: theme.fontSizes.md } }}>Фильтры</Title>
         <ClearButton handleClick={handleReset} />
       </Flex>
       <TitleOrder4Component>Отрасль</TitleOrder4Component>
@@ -64,7 +60,13 @@ const FiltersForm: FC<FiltersFormType> = ({
         placeholder="До"
         name="to"
       />
-      <Button variant="filled" data-elem="search-button" onClick={handleClick}>
+      <Button variant="filled" data-elem="search-button" onClick={handleClick}
+        sx={{
+          marginTop: "8px",
+          width: "275px",
+          height: "40px",
+          alignContent: "center"
+        }}>
         Применить
       </Button>
     </Flex>

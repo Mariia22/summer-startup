@@ -23,7 +23,7 @@ const SearchForm: FC<SearchFormType> = ({ handleClick }) => {
   return (
     <TextInput
       data-elem="search-input"
-      icon={<Image width={16} height={16} src="/search.svg" />}
+      icon={<Image width={20} height={20} src="/search.png" />}
       rightSection={
         <Button
           variant="filled"
@@ -39,12 +39,16 @@ const SearchForm: FC<SearchFormType> = ({ handleClick }) => {
           Поиск
         </Button>
       }
-      rightSectionWidth={smallScreen ? 60 : 120}
+      rightSectionWidth={smallScreen ? 60 : 100}
       styles={{
         input: {
+          fontSize: '0.875rem',
           border: `1px solid ${theme.colors.grey[1]}`,
           borderRadius: "8px",
-        },
+          "&[data-with-icon]": {
+            paddingLeft: "36px",
+          }
+        }
       }}
       size={smallScreen ? 'sm' : 'lg'}
       placeholder="Введите название вакансии"

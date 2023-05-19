@@ -92,9 +92,9 @@ const VacanciesPage = () => {
       justify="center"
       gap="28px"
       sx={{
-        padding: "40px 44px 162px",
+        padding: "40px 0px 162px",
         backgroundColor: theme.colors.grey[5],
-        minHeight: "91vh",
+        minHeight: "89vh",
         '@media (max-width: 63em)': {
           fontSize: theme.fontSizes.sm,
         },

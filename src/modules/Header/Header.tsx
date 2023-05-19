@@ -8,7 +8,7 @@ const Header = () => {
     <Flex
       justify="flex-start"
       sx={{
-        height: "9vh",
+        height: "11vh",
         padding: "0 162px",
         backgroundColor: theme.white,
         gap: "280px",

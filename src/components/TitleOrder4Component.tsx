@@ -9,6 +9,7 @@ const TitleOrder4Component: FC<TitleType> = ({ children }) => {
   const theme = useMantineTheme();
   return (
     <Title order={4} sx={{
+      marginTop: "20px",
       '@media (max-width: 63em)': {
         fontSize: theme.fontSizes.md,
       }

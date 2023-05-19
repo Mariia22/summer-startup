@@ -54,32 +54,40 @@ const FavouriteList = () => {
       sx={{
         padding: "40px 40px 44px",
         backgroundColor: theme.colors.grey[5],
-        height: "91vh",
+        height: "89vh"
       }}
     >
-      <Flex direction="column" gap="1rem">
-        {sliceVacancies.length > 0 ? (
-          sliceVacancies.map((vacancy) => {
-            return (
-              <VacancyCard
-                data-elem={`vacancy-${vacancy.id}`}
-                key={vacancy.id}
-                id={vacancy.id}
-                profession={vacancy.profession}
-                paymentFrom={vacancy.paymentFrom}
-                paymentTo={vacancy.paymentTo}
-                currency={vacancy.currency}
-                typeOfWork={vacancy.typeOfWork}
-                town={vacancy.town}
-                detailes={vacancy.detailes}
-                isFavourite={vacancy.isFavourite}
-                handleClick={handleClick}
-              />
-            );
-          })
-        ) : (
-          <EmptyList />
-        )}
+      <Flex direction="column" gap="1rem"
+        sx={{
+          width: "57%",
+          '@media (max-width: 37em)': {
+            width: "100%", gap: "0.3rem"
+          }
+        }} >
+        {
+          sliceVacancies.length > 0 ? (
+            sliceVacancies.map((vacancy) => {
+              return (
+                <VacancyCard
+                  data-elem={`vacancy-${vacancy.id}`}
+                  key={vacancy.id}
+                  id={vacancy.id}
+                  profession={vacancy.profession}
+                  paymentFrom={vacancy.paymentFrom}
+                  paymentTo={vacancy.paymentTo}
+                  currency={vacancy.currency}
+                  typeOfWork={vacancy.typeOfWork}
+                  town={vacancy.town}
+                  detailes={vacancy.detailes}
+                  isFavourite={vacancy.isFavourite}
+                  handleClick={handleClick}
+                />
+              );
+            })
+          ) : (
+            <EmptyList />
+          )
+        }
         {favouriteVacancies.length > 0 && (
           <PaginationComponent
             value={activePage}
@@ -88,7 +96,7 @@ const FavouriteList = () => {
           />
         )}
       </Flex>
-    </Flex>
+    </Flex >
   );
 };
 

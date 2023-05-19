@@ -18,11 +18,12 @@ const SelectComponent: FC<SelectType> = ({ data }) => {
     <Select
       data-elem="industry-select"
       data={data?.length ? [...data] : []}
-      placeholder="От"
+      placeholder="Выберете отрасль"
       rightSection={<Image width={24} height={24} src="/down.svg" />}
       rightSectionWidth={50}
-      styles={{ rightSection: { pointerEvents: "none" } }}
+      styles={{ rightSection: { pointerEvents: "none" }, input: { height: "42px" } }}
       value={state.industry}
+      fz={"1.2rem"}
       onChange={(value) => handleChange(value)}
     />
   );
