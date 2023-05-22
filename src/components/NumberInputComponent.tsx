@@ -43,7 +43,21 @@ const NumberInputComponent: FC<NumberInputType> = ({
           height: "12px",
           border: "none",
           color: theme.colors.grey[3],
+          "&:hover": {
+            color: `${theme.colors.blue[2]}`,
+          },
+          "&:focus": {
+            color: `${theme.colors.blue[1]}`,
+          },
+          '&:not(:disabled):hover': {
+            backgroundColor: "transparent"
+          }
         },
+        rightSection: {
+          justifyContent: "center",
+          height: "100%",
+          padding: "5px 5px 5px 0px"
+        }
       })}
     />
   );
