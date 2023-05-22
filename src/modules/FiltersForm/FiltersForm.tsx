@@ -65,7 +65,10 @@ const FiltersForm: FC<FiltersFormType> = ({
           marginTop: "8px",
           width: "275px",
           height: "40px",
-          alignContent: "center"
+          alignContent: "center",
+          '@media (max-width: 63em)': {
+            width: "200px",
+          }
         }}>
         Применить
       </Button>

@@ -18,7 +18,7 @@ const PaginationComponent: FC<PaginationType> = ({
       value={value}
       total={total}
       size={smallScreen ? "xs" : "md"}
-      spacing={smallScreen ? 1 : 4}
+      spacing={smallScreen ? 1 : 8}
       position="center"
       styles={(theme) => ({
         control: {

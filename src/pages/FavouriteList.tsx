@@ -50,11 +50,11 @@ const FavouriteList = () => {
 
   return (
     <Flex
-      justify="center"
+      direction="column" gap="7rem" align="center"
       sx={{
         padding: "40px 40px 44px",
         backgroundColor: theme.colors.grey[5],
-        height: "89vh"
+        minHeight: "89vh",
       }}
     >
       <Flex direction="column" gap="1rem"
@@ -88,14 +88,14 @@ const FavouriteList = () => {
             <EmptyList />
           )
         }
-        {favouriteVacancies.length > 0 && (
-          <PaginationComponent
-            value={activePage}
-            total={total}
-            handleChange={handleChangePage}
-          />
-        )}
       </Flex>
+      {favouriteVacancies.length > 0 && (
+        <PaginationComponent
+          value={activePage}
+          total={total}
+          handleChange={handleChangePage}
+        />
+      )}
     </Flex >
   );
 };

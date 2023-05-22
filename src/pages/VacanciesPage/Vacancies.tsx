@@ -100,7 +100,8 @@ const VacanciesPage = () => {
         },
         '@media (max-width: 37em)': {
           flexDirection: "column",
-          alignItems: "center"
+          alignItems: "center",
+          padding: "20px"
         },
       }}
     >
@@ -114,7 +115,7 @@ const VacanciesPage = () => {
       <Flex direction="column" sx={{
         width: "53.6%",
         gap: "1rem",
-        '@media (max-width: 37em)': { width: "100%", gap: "0.3rem" }
+        '@media (max-width: 37em)': { width: "100%" }
       }}>
         {vacanciesWithFavoriteFlag &&
           vacanciesWithFavoriteFlag.length !== 0 && (

@@ -23,7 +23,8 @@ const SearchForm: FC<SearchFormType> = ({ handleClick }) => {
   return (
     <TextInput
       data-elem="search-input"
-      icon={<Image width={20} height={20} src="/search.png" />}
+      icon={<Image width={22} height={22} src="/search.png" />}
+      iconWidth={40}
       rightSection={
         <Button
           variant="filled"
@@ -42,12 +43,16 @@ const SearchForm: FC<SearchFormType> = ({ handleClick }) => {
       rightSectionWidth={smallScreen ? 60 : 100}
       styles={{
         input: {
-          fontSize: '0.875rem',
+          fontSize: smallScreen ? '0.7rem' : '0.875rem',
           border: `1px solid ${theme.colors.grey[1]}`,
           borderRadius: "8px",
           "&[data-with-icon]": {
-            paddingLeft: "36px",
+            paddingLeft: "36px"
           }
+        },
+        icon: {
+          paddingLeft: "5px",
+          paddingTop: "6px"
         }
       }}
       size={smallScreen ? 'sm' : 'lg'}

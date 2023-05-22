@@ -17,8 +17,8 @@ const Header = () => {
           gap: "30%",
         },
         '@media (max-width: 47em)': {
-          padding: "0 30px",
-          gap: "10%",
+          padding: "0 20px",
+          gap: "5%",
         },
       }}
     >
