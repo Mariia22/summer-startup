@@ -6,10 +6,5 @@ import { resolve } from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   base: "/summer-startup/",
-  resolve: {
-    alias: {
-      "@": resolve(__dirname, "src")
-    }
-  },
   plugins: [react(), svgr()]
 });
