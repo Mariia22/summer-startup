@@ -1,6 +1,6 @@
 import { Global } from "@mantine/core";
-import inter from "Inter.ttf";
-import poppins from "poppins.ttf";
+import inter from "../fonts/Inter.ttf";
+import poppins from "../fonts/poppins.ttf";
 
 export function CustomFonts() {
   return (
