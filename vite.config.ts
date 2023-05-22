@@ -5,12 +5,6 @@ import { resolve } from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  build: {
-    rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html')
-      },
-    },
-  },
+  base: "/summer-startup/",
   plugins: [react(), svgr()]
 });
