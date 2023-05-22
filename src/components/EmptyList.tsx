@@ -1,6 +1,7 @@
 import { Flex, Image, Text, useMantineTheme } from "@mantine/core";
 import { FC } from "react";
 import { Link } from "react-router-dom";
+import emptyImage from "../assets/emptyPage.png";
 
 type EmptyListType = {
   handleClick?: () => void;
@@ -15,7 +16,7 @@ const EmptyList: FC<EmptyListType> = ({ handleClick }) => {
       gap="32px"
       sx={{ padding: "80px 0", alignItems: "center" }}
     >
-      <Image width="240px" height="230px" src="/emptyPage.png" />
+      <Image width="240px" height="230px" src={emptyImage} />
       <Text fz="1.5rem" sx={{ fontWeight: "bold", lineHeight: "1.8rem" }}>
         Упс, здесь еще ничего нет!
       </Text>

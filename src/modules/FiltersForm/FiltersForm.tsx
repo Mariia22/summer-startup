@@ -29,7 +29,7 @@ const FiltersForm: FC<FiltersFormType> = ({
       gap="8px"
       sx={{
         width: "315px",
-        maxHeight: "47vh",
+        maxHeight: "360px",
         padding: "15px 20px",
         border: `1px solid ${theme.colors.grey[1]}`,
         borderRadius: "12px",

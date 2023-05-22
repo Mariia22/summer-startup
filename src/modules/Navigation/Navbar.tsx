@@ -9,9 +9,10 @@ const Navbar = () => {
 
   return (
     <Flex
-      justify="space-between"
+      justify="center"
       align="center"
       gap={smallScreen ? "20px" : "60px"}
+      sx={{ flexGrow: 2 }}
     >
       {navListConfig.map(({ id, text, url }) => {
         return (

@@ -3,6 +3,7 @@ import { ChangeEvent, FC, useContext } from "react";
 import { FilterContext } from "../../pages/App/utils/context";
 import { ActionsTypes } from "../../pages/App/utils/types";
 import { useMediaQuery } from "@mantine/hooks";
+import SearchImage from "../../assets/search.png";
 
 type SearchFormType = {
   handleClick: () => void;
@@ -23,7 +24,7 @@ const SearchForm: FC<SearchFormType> = ({ handleClick }) => {
   return (
     <TextInput
       data-elem="search-input"
-      icon={<Image width={22} height={22} src="/search.png" />}
+      icon={<Image width={22} height={22} src={SearchImage} />}
       iconWidth={40}
       rightSection={
         <Button

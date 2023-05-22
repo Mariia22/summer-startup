@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import FavouriteIconComponent from "../modules/FavouritesIcon/FavouritesIcon";
 import { VacancyCardType } from "../pages/VacanciesPage/utils/types";
 import { useMediaQuery } from "@mantine/hooks";
+import locationImage from "../assets/location.svg";
 
 const VacancyCard: FC<VacancyCardType> = (props) => {
   const {
@@ -147,7 +148,7 @@ const VacancyCard: FC<VacancyCardType> = (props) => {
           <Image
             width={20}
             height={20}
-            src="/location.svg"
+            src={locationImage}
             sx={{ marginRight: "2px" }}
           />
           <Text

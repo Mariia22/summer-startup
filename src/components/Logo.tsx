@@ -1,6 +1,7 @@
 import { Flex, Title, Image, useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { Link } from "react-router-dom";
+import LogoImage from "../assets/union.svg";
 
 const Logo = () => {
   const theme = useMantineTheme();
@@ -17,7 +18,7 @@ const Logo = () => {
       }}
     >
       <Flex justify="flex-start" align="center">
-        <Image width={30} height={30} src="/union.svg" alt="Jobored's logo" />
+        <Image width={30} height={30} src={LogoImage} alt="Jobored's logo" />
         <Title
           order={1}
           sx={{
