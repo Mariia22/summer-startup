@@ -66,6 +66,12 @@ export const theme: MantineThemeOverride = {
             padding: "5.5px 20px",
             backgroundColor: theme.colors.blue[1],
             borderRadius: "8px",
+            '&:hover': {
+              backgroundColor: theme.colors.blue[2]
+            },
+            '&:active': {
+              backgroundColor: theme.colors.blue[0]
+            }
           },
         }),
         none: (theme) => ({
@@ -74,7 +80,13 @@ export const theme: MantineThemeOverride = {
             lineHeight: "1.31rem",
             color: theme.colors.grey[3],
             height: "1.5rem",
-            padding: "0rem"
+            padding: "0rem",
+            '&:hover': {
+              color: theme.colors.blue[2]
+            },
+            '&:active': {
+              color: theme.colors.blue[1]
+            }
           },
         }),
       },

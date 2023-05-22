@@ -27,7 +27,9 @@ const PaginationComponent: FC<PaginationType> = ({
             backgroundColor: theme.colors.blue[1],
           },
           "&:not([data-disabled]):hover": {
-            color: theme.black,
+            backgroundColor: theme.colors.blue[2],
+            color: theme.white,
+            border: "none"
           },
           [`@media (max-width: 47em)`]: {
             fontSize: theme.fontSizes.sm

@@ -1,7 +1,8 @@
-import { Select, SelectItem, Image } from "@mantine/core";
+import { Select, SelectItem } from "@mantine/core";
 import { FC, useContext, useState } from "react";
 import { FilterContext } from "../pages/App/utils/context";
 import { ActionsTypes } from "../pages/App/utils/types";
+import { ReactComponent as DropdownIcon } from "../assets/down.svg";
 
 type SelectType = {
   data: SelectItem[] | undefined;
@@ -20,7 +21,7 @@ const SelectComponent: FC<SelectType> = ({ data }) => {
       data-elem="industry-select"
       data={data?.length ? [...data] : []}
       placeholder="Выберете отрасль"
-      rightSection={isOpened ? <Image width={24} height={24} src="/upArrow.svg" /> : <Image width={24} height={24} src="/down.svg" />}
+      rightSection={<DropdownIcon />}
       rightSectionWidth={50}
       searchable
       nothingFound="No options"
@@ -30,11 +31,16 @@ const SelectComponent: FC<SelectType> = ({ data }) => {
       onDropdownOpen={() => setOpened(true)}
       onDropdownClose={() => setOpened(false)}
       styles={(theme) => ({
-        rightSection: { pointerEvents: "none" },
+        rightSection: {
+          stroke: isOpened ? theme.colors.blue[1] : theme.colors.grey[3],
+          pointerEvents: "none",
+          transition: 'transform 150ms ease',
+          transform: isOpened ? 'rotate(180deg)' : 'rotate(0deg)'
+        },
         input: {
           height: "42px",
           border: isOpened ? `1px solid ${theme.colors.blue[1]}` : `1px solid ${theme.colors.grey[2]}`,
-          '&:hover': {
+          '&:hover, &:focus': {
             border: `1px solid ${theme.colors.blue[1]}`
           }
         },
@@ -51,8 +57,7 @@ const SelectComponent: FC<SelectType> = ({ data }) => {
           },
           '&[data-hovered]': {
             width: "97%",
-            backgroundColor: theme.colors.blue[1],
-            color: theme.white,
+            backgroundColor: theme.colors.blue[5]
           },
         },
       })}

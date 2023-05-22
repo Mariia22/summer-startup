@@ -16,6 +16,7 @@ const Navbar = () => {
             key={id}
             style={({ isActive }) => {
               return {
+                fontWeight: "400",
                 lineHeight: "1.25rem",
                 textDecoration: "none",
                 textAlign: "center",

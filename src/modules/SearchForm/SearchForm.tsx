@@ -48,6 +48,9 @@ const SearchForm: FC<SearchFormType> = ({ handleClick }) => {
           borderRadius: "8px",
           "&[data-with-icon]": {
             paddingLeft: "36px"
+          },
+          '&:hover, &:focus': {
+            border: `1px solid ${theme.colors.blue[1]}`
           }
         },
         icon: {
