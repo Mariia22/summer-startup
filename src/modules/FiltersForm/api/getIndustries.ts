@@ -10,11 +10,15 @@ export const useGetIndustries = (token: string | null) => {
     data: industries,
     isLoading,
     isError,
-    error,
+    error
   } = useQuery(
     ["industries", token],
     () => {
-      const response = queryInstance.get(`catalogues/`);
+      const response = queryInstance.get(`catalogues/`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       return response;
     },
     {
@@ -29,7 +33,7 @@ export const useGetIndustries = (token: string | null) => {
           []
         );
         return catalogues;
-      },
+      }
     }
   );
   return { industries, isLoading, isError, error: error as AxiosError };

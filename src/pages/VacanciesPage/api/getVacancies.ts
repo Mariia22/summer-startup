@@ -16,19 +16,24 @@ export const useGetVacanciesByFilter = (
     data: vacancies,
     isLoading,
     isError,
-    error,
+    error
   } = useQuery(
     ["vacancies", token, page, catalogues, keyword, paymentFrom, paymentTo],
     () => {
       const response = queryInstance.get(
-        `vacancies/?page=${page}&count=${vacanciesPerPage}&published=1&catalogues=${catalogues}&keyword=${keyword}&payment_from=${paymentFrom}&payment_to=${paymentTo}`
+        `vacancies/?page=${page}&count=${vacanciesPerPage}&published=1&catalogues=${catalogues}&keyword=${keyword}&payment_from=${paymentFrom}&payment_to=${paymentTo}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
       );
       return response;
     },
     {
       retry: false,
       enabled: !!token,
-      select: (response) => response.data as ResponseType,
+      select: (response) => response.data as ResponseType
     }
   );
   return { vacancies, isLoading, isError, error: error as AxiosError };

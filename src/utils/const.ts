@@ -7,15 +7,14 @@ const queryHeaders = {
   Accept: "text/plain",
   "Access-Control-Allow-Origin": "*",
   "x-secret-key": import.meta.env.VITE_HEADER,
-  "X-Api-App-Id": import.meta.env.VITE_CLIENT_SECRET,
-  Authorization: `Bearer ${localStorage.getItem("token")?.toString()}`,
+  "X-Api-App-Id": import.meta.env.VITE_CLIENT_SECRET
 };
 
 export const queryInstance = axios.create({
   baseURL: baseURL,
-  headers: queryHeaders,
+  headers: queryHeaders
 });
 
 export const networkMessages = {
-  notAuthorization: "You are not authorized. Please, reload the page",
+  notAuthorization: "You are not authorized. Please, reload the page"
 };
