@@ -23,7 +23,7 @@ const VacancyCard: FC<VacancyCardType> = (props) => {
   const theme = useMantineTheme();
   const navigate = useNavigate();
   const [isActive, setActive] = useState(isFavourite);
-  const smallScreen = useMediaQuery('(max-width: 47em)');
+  const smallScreen = useMediaQuery("(max-width: 47em)");
 
   function handleChangeCard() {
     setActive(!isActive);
@@ -72,55 +72,76 @@ const VacancyCard: FC<VacancyCardType> = (props) => {
           lh={isDetailed ? "2.12rem" : "1.5rem"}
           sx={{
             color: isDetailed ? theme.black : theme.colors.blue[1],
-            '@media (max-width: 63em)': {
+            "@media (max-width: 63em)": {
               fontSize: theme.fontSizes.md,
-            }
+            },
           }}
         >
           {profession}
         </Title>
-        <Flex
-          sx={{ '@media (max-width: 37em)': { flexDirection: "column" } }}>
+        <Flex sx={{ "@media (max-width: 37em)": { flexDirection: "column" } }}>
           {paymentFrom <= 0 ? (
-            <Text fw={isDetailed ? 700 : 600} fz={isDetailed ? "1.25rem" : "1rem"} sx={{
-              '@media (max-width: 63em)': {
-                fontSize: "0.8rem",
-              }
-            }}>з/п по договоренности</Text>
+            <Text
+              fw={isDetailed ? 700 : 600}
+              fz={isDetailed ? "1.25rem" : "1rem"}
+              sx={{
+                "@media (max-width: 63em)": {
+                  fontSize: "0.8rem",
+                },
+              }}
+            >
+              з/п по договоренности
+            </Text>
           ) : paymentTo > 0 ? (
-            <Text fw={isDetailed ? 700 : 600} fz={isDetailed ? "1.25rem" : "1rem"} sx={{
-              '@media (max-width: 63em)': {
-                fontSize: "0.8rem",
-              }
-            }}>
+            <Text
+              fw={isDetailed ? 700 : 600}
+              fz={isDetailed ? "1.25rem" : "1rem"}
+              sx={{
+                "@media (max-width: 63em)": {
+                  fontSize: "0.8rem",
+                },
+              }}
+            >
               з/п от {paymentFrom} - {paymentTo} {currency}
             </Text>
           ) : (
-            <Text fw={isDetailed ? 700 : 600} fz={isDetailed ? "1.25rem" : "1rem"} sx={{
-              '@media (max-width: 63em)': {
-                fontSize: "0.8rem",
-              }
-            }}>
+            <Text
+              fw={isDetailed ? 700 : 600}
+              fz={isDetailed ? "1.25rem" : "1rem"}
+              sx={{
+                "@media (max-width: 63em)": {
+                  fontSize: "0.8rem",
+                },
+              }}
+            >
               з/п от {paymentFrom} {currency}
             </Text>
           )}
-          {!smallScreen && <Text
-            span
+          {!smallScreen && (
+            <Text
+              span
+              sx={{
+                fontFamily: "Poppins",
+                fontSize: "1.25rem",
+                lineHeight: "21px",
+                margin: "0 12px",
+                color: theme.colors.grey[4],
+              }}
+            >
+              &bull;
+            </Text>
+          )}
+          <Text
+            fw={400}
+            fz={isDetailed ? "1.25rem" : "1rem"}
             sx={{
-              fontFamily: "Poppins",
-              fontSize: "1.25rem",
-              lineHeight: "21px",
-              margin: "0 12px",
-              color: theme.colors.grey[4],
+              "@media (max-width: 63em)": {
+                fontSize: "0.8rem",
+              },
             }}
           >
-            &bull;
-          </Text>}
-          <Text fw={400} fz={isDetailed ? "1.25rem" : "1rem"} sx={{
-            '@media (max-width: 63em)': {
-              fontSize: "0.8rem",
-            }
-          }}>{typeOfWork}</Text>
+            {typeOfWork}
+          </Text>
         </Flex>
         <Flex align="center">
           <Image
@@ -129,11 +150,17 @@ const VacancyCard: FC<VacancyCardType> = (props) => {
             src="/location.svg"
             sx={{ marginRight: "2px" }}
           />
-          <Text fw={400} lh={isDetailed ? "1.4rem" : "1.25rem"} sx={{
-            '@media (max-width: 63em)': {
-              fontSize: "0.8rem",
-            }
-          }}>{town}</Text>
+          <Text
+            fw={400}
+            lh={isDetailed ? "1.4rem" : "1.25rem"}
+            sx={{
+              "@media (max-width: 63em)": {
+                fontSize: "0.8rem",
+              },
+            }}
+          >
+            {town}
+          </Text>
         </Flex>
       </Flex>
       <Flex>

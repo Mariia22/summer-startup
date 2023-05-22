@@ -18,7 +18,7 @@ const VacancyPage = () => {
     detailes,
     isFavourite,
   } = location.state;
-  const smallScreen = useMediaQuery('(max-width: 63em)');
+  const smallScreen = useMediaQuery("(max-width: 63em)");
 
   const cleanHTML = DOMPurify.sanitize(detailes, {
     USE_PROFILES: { html: true },
@@ -27,9 +27,16 @@ const VacancyPage = () => {
   return (
     <Flex
       justify="center"
-      sx={{ padding: smallScreen ? "20px" : "40px 40px 50px", backgroundColor: theme.colors.grey[5] }}
+      sx={{
+        padding: smallScreen ? "20px" : "40px 40px 50px",
+        backgroundColor: theme.colors.grey[5],
+      }}
     >
-      <Flex direction="column" sx={{ width: smallScreen ? "100%" : "57%" }} gap="1rem">
+      <Flex
+        direction="column"
+        sx={{ width: smallScreen ? "100%" : "57%" }}
+        gap="1rem"
+      >
         <VacancyCard
           data-elem={`vacancy-${id}`}
           id={id}

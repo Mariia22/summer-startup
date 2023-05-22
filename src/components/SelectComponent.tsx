@@ -34,30 +34,32 @@ const SelectComponent: FC<SelectType> = ({ data }) => {
         rightSection: {
           stroke: isOpened ? theme.colors.blue[1] : theme.colors.grey[3],
           pointerEvents: "none",
-          transition: 'transform 150ms ease',
-          transform: isOpened ? 'rotate(180deg)' : 'rotate(0deg)'
+          transition: "transform 150ms ease",
+          transform: isOpened ? "rotate(180deg)" : "rotate(0deg)",
         },
         input: {
           height: "42px",
-          border: isOpened ? `1px solid ${theme.colors.blue[1]}` : `1px solid ${theme.colors.grey[2]}`,
-          '&:hover, &:focus': {
-            border: `1px solid ${theme.colors.blue[1]}`
-          }
+          border: isOpened
+            ? `1px solid ${theme.colors.blue[1]}`
+            : `1px solid ${theme.colors.grey[2]}`,
+          "&:hover, &:focus": {
+            border: `1px solid ${theme.colors.blue[1]}`,
+          },
         },
         dropdown: {
-          fontSize: '0.85rem'
+          fontSize: "0.85rem",
         },
         item: {
-          '&[data-selected]': {
-            '&, &:hover': {
+          "&[data-selected]": {
+            "&, &:hover": {
               width: "97%",
               backgroundColor: theme.colors.blue[1],
               color: theme.white,
             },
           },
-          '&[data-hovered]': {
+          "&[data-hovered]": {
             width: "97%",
-            backgroundColor: theme.colors.blue[5]
+            backgroundColor: theme.colors.blue[5],
           },
         },
       })}

@@ -12,7 +12,7 @@ const PaginationComponent: FC<PaginationType> = ({
   total,
   handleChange,
 }) => {
-  const smallScreen = useMediaQuery('(max-width: 63em)');
+  const smallScreen = useMediaQuery("(max-width: 63em)");
   return (
     <Pagination
       value={value}
@@ -29,10 +29,10 @@ const PaginationComponent: FC<PaginationType> = ({
           "&:not([data-disabled]):hover": {
             backgroundColor: theme.colors.blue[2],
             color: theme.white,
-            border: "none"
+            border: "none",
           },
           [`@media (max-width: 47em)`]: {
-            fontSize: theme.fontSizes.sm
+            fontSize: theme.fontSizes.sm,
           },
         },
       })}

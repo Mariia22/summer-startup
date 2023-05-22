@@ -34,17 +34,22 @@ const FiltersForm: FC<FiltersFormType> = ({
         border: `1px solid ${theme.colors.grey[1]}`,
         borderRadius: "12px",
         backgroundColor: theme.white,
-        '@media (max-width: 63em)': {
+        "@media (max-width: 63em)": {
           width: "250px",
           maxHeight: "60vh",
         },
-        '@media (max-width: 37em)': {
-          width: "100%"
+        "@media (max-width: 37em)": {
+          width: "100%",
         },
       }}
     >
       <Flex justify="space-between">
-        <Title order={2} sx={{ '@media (max-width: 63em)': { fontSize: theme.fontSizes.md } }}>Фильтры</Title>
+        <Title
+          order={2}
+          sx={{ "@media (max-width: 63em)": { fontSize: theme.fontSizes.md } }}
+        >
+          Фильтры
+        </Title>
         <ClearButton handleClick={handleReset} />
       </Flex>
       <TitleOrder4Component>Отрасль</TitleOrder4Component>
@@ -60,16 +65,20 @@ const FiltersForm: FC<FiltersFormType> = ({
         placeholder="До"
         name="to"
       />
-      <Button variant="filled" data-elem="search-button" onClick={handleClick}
+      <Button
+        variant="filled"
+        data-elem="search-button"
+        onClick={handleClick}
         sx={{
           marginTop: "8px",
           width: "275px",
           height: "40px",
           alignContent: "center",
-          '@media (max-width: 63em)': {
+          "@media (max-width: 63em)": {
             width: "200px",
-          }
-        }}>
+          },
+        }}
+      >
         Применить
       </Button>
     </Flex>

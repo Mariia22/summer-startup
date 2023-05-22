@@ -34,9 +34,9 @@ const NumberInputComponent: FC<NumberInputType> = ({
         input: {
           height: "42px",
           fontSize: "0.875rem",
-          '&:hover, &:focus': {
-            border: `1px solid ${theme.colors.blue[1]}`
-          }
+          "&:hover, &:focus": {
+            border: `1px solid ${theme.colors.blue[1]}`,
+          },
         },
         control: {
           width: "12px",

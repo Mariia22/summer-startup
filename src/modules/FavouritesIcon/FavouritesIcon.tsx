@@ -20,7 +20,11 @@ const FavouriteIconComponent: FC<FavouriteIconType> = ({
   };
 
   return (
-    <ActionIcon variant="transparent" aria-label="Favourite button" onClick={handleChange}>
+    <ActionIcon
+      variant="transparent"
+      aria-label="Favourite button"
+      onClick={handleChange}
+    >
       <FavouriteIcon
         width={24}
         height={24}
@@ -31,8 +35,8 @@ const FavouriteIconComponent: FC<FavouriteIconType> = ({
           stroke: isActive
             ? `${theme.colors.blue[1]}`
             : isHovered
-              ? `${theme.colors.blue[1]}`
-              : `${theme.colors.grey[7]}`,
+            ? `${theme.colors.blue[1]}`
+            : `${theme.colors.grey[7]}`,
         }}
       />
     </ActionIcon>

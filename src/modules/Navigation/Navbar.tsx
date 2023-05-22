@@ -5,10 +5,14 @@ import { useMediaQuery } from "@mantine/hooks";
 
 const Navbar = () => {
   const theme = useMantineTheme();
-  const smallScreen = useMediaQuery('(max-width: 63em)');
+  const smallScreen = useMediaQuery("(max-width: 63em)");
 
   return (
-    <Flex justify="space-between" align="center" gap={smallScreen ? "20px" : "60px"}>
+    <Flex
+      justify="space-between"
+      align="center"
+      gap={smallScreen ? "20px" : "60px"}
+    >
       {navListConfig.map(({ id, text, url }) => {
         return (
           <NavLink
@@ -23,7 +27,7 @@ const Navbar = () => {
                 color: isActive
                   ? `${theme.colors.blue[1]}`
                   : `${theme.colors.grey[6]}`,
-                fontSize: smallScreen ? "0.7rem" : "1rem"
+                fontSize: smallScreen ? "0.7rem" : "1rem",
               };
             }}
           >

@@ -6,15 +6,15 @@ export const theme: MantineThemeOverride = {
   lineHeight: "1.4rem",
   defaultRadius: "8px",
   breakpoints: {
-    xs: '30em',
-    sm: '48em',
-    md: '64em',
-    lg: '74em',
-    xl: '90em',
+    xs: "30em",
+    sm: "48em",
+    md: "64em",
+    lg: "74em",
+    xl: "90em",
   },
   fontSizes: {
-    sm: '0.75em',
-    md: '1rem',
+    sm: "0.75em",
+    md: "1rem",
   },
   headings: {
     fontWeight: 700,
@@ -66,12 +66,12 @@ export const theme: MantineThemeOverride = {
             padding: "5.5px 20px",
             backgroundColor: theme.colors.blue[1],
             borderRadius: "8px",
-            '&:hover': {
-              backgroundColor: theme.colors.blue[2]
+            "&:hover": {
+              backgroundColor: theme.colors.blue[2],
             },
-            '&:active': {
-              backgroundColor: theme.colors.blue[0]
-            }
+            "&:active": {
+              backgroundColor: theme.colors.blue[0],
+            },
           },
         }),
         none: (theme) => ({
@@ -81,12 +81,12 @@ export const theme: MantineThemeOverride = {
             color: theme.colors.grey[3],
             height: "1.5rem",
             padding: "0rem",
-            '&:hover': {
-              color: theme.colors.blue[2]
+            "&:hover": {
+              color: theme.colors.blue[2],
             },
-            '&:active': {
-              color: theme.colors.blue[1]
-            }
+            "&:active": {
+              color: theme.colors.blue[1],
+            },
           },
         }),
       },

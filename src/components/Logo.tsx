@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Logo = () => {
   const theme = useMantineTheme();
-  const smallScreen = useMediaQuery('(max-width: 47em)');
+  const smallScreen = useMediaQuery("(max-width: 47em)");
 
   return (
     <Link
@@ -25,7 +25,7 @@ const Logo = () => {
             marginLeft: "12px",
             letterSpacing: "-0.02em",
             color: theme.colors.grey[6],
-            fontSize: smallScreen ? "1rem" : "1.5rem"
+            fontSize: smallScreen ? "1rem" : "1.5rem",
           }}
           fw={600}
         >
